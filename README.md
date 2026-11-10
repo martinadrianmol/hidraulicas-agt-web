@@ -30,7 +30,7 @@ Todas usan solo `transform`, `opacity` o `clip-path`, con curvas *ease-out* fuer
 
 - Hero: titular que aparece palabra por palabra, zoom lento de la foto, gota de agua que cae del grifo con ondas, olas animadas y parallax.
 - Barra de progreso de lectura; el header se oculta al bajar y reaparece al subir.
-- Contadores animados (años calculados automáticamente desde 2016).
+- Contadores animados: años (calculados automáticamente desde 2016), 36 h y 6 servicios.
 - Imagen con revelado tipo cortina; pestañas Misión/Visión/Valores con indicador deslizante.
 - Tarjetas de servicio: elevación, zoom de imagen, ícono que gira y foco de luz que sigue al cursor.
 - "Cómo operamos": una tubería se llena de agua a medida que se hace scroll y activa cada paso.
