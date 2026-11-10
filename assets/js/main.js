@@ -12,6 +12,13 @@
 
   $('#year').textContent = new Date().getFullYear();
 
+  // Si una foto externa no carga, se oculta y queda el degradado de marca de fondo
+  $$('img').forEach((img) => {
+    const hide = () => { img.style.visibility = 'hidden'; };
+    if (img.complete && img.naturalWidth === 0 && img.src) hide();
+    img.addEventListener('error', hide);
+  });
+
   // ---------- Titular del hero: dividir en palabras ----------
   let wordIndex = 0;
   $$('[data-split] .split-line').forEach((line) => {
