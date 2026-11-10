@@ -58,7 +58,7 @@ Busque los comentarios en mayúsculas dentro de `index.html` (`IMAGEN`, `CLIENTE
 
 | Qué | Acción |
 |---|---|
-| Fotos | Hoy son de Unsplash (licencia gratuita, enlazadas desde su CDN). Ideal: reemplazar por fotos propias profesionales de obra |
+| Fotos | Hoy son de Unsplash (licencia gratuita), alojadas en `assets/img/`. Ideal: reemplazar por fotos propias profesionales de obra |
 | Logo | Si existe en vector (SVG/AI), reemplazar los PNG de `assets/img/` |
 | Logos de clientes | Reemplazar nombres por logos, con autorización |
 | Testimonios | No hay en la documentación; añadir solo reales y autorizados |

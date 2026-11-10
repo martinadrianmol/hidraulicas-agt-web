@@ -17,7 +17,6 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="preconnect" href="https://images.unsplash.com" />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
 
   <!-- Estilos compilados con Tailwind CLI (fuente: src/input.css — ver README) -->
@@ -77,11 +76,11 @@
          HERO
     ========================================================== -->
     <section id="inicio" class="relative isolate flex min-h-[100svh] items-center overflow-hidden bg-navy-950">
-      <!-- IMAGEN HERO (Unsplash). PRODUCCIÓN: idealmente una foto propia de obra a 1920 px -->
+      <!-- IMAGEN HERO: assets/img/hero.jpg (Unsplash). PRODUCCIÓN: idealmente una foto propia de obra a 1920 px -->
       <div class="absolute inset-0 -z-20" data-parallax="0.25">
-        <img class="hero-media h-full w-full object-cover"
-             src="https://images.unsplash.com/photo-1583841668932-a7c3250a6e37?auto=format&fit=crop&w=2000&q=80"
-             srcset="https://images.unsplash.com/photo-1583841668932-a7c3250a6e37?auto=format&fit=crop&w=900&q=75 900w, https://images.unsplash.com/photo-1583841668932-a7c3250a6e37?auto=format&fit=crop&w=1600&q=80 1600w, https://images.unsplash.com/photo-1583841668932-a7c3250a6e37?auto=format&fit=crop&w=2400&q=80 2400w"
+        <img class="hero-media h-full w-full object-cover object-[70%_50%]"
+             src="assets/img/hero.jpg"
+             srcset="assets/img/hero-960.jpg 960w, assets/img/hero.jpg 1920w"
              sizes="100vw" alt="Excavadora trabajando en una obra urbana" fetchpriority="high" />
       </div>
       <div class="absolute inset-0 -z-10 bg-gradient-to-r from-navy-950 via-navy-950/85 to-navy-900/40"></div>
@@ -189,7 +188,7 @@
         <div class="relative">
           <div class="reveal-clip overflow-hidden rounded-3xl bg-gradient-to-br from-navy-800 to-aqua-700 shadow-lift">
             <!-- IMAGEN (Unsplash) — PRODUCCIÓN: foto del equipo propio -->
-            <img src="https://images.unsplash.com/photo-1759542878135-bc80368e74ef?auto=format&fit=crop&w=1200&h=1000&q=80" alt="Cuadrilla de trabajadores en obra" class="aspect-[6/5] w-full object-cover" loading="lazy" />
+            <img src="assets/img/equipo.jpg" alt="Cuadrilla de trabajadores en obra" class="aspect-[6/5] w-full object-cover" loading="lazy" />
           </div>
           <div class="reveal reveal-right absolute -bottom-8 -right-3 hidden max-w-[260px] rounded-2xl bg-white p-5 shadow-lift sm:block lg:-right-8" style="--d:500ms">
             <div class="flex items-center gap-3">
@@ -251,11 +250,11 @@
           <p class="reveal max-w-md text-navy-500" style="--d:120ms">Desde la excavación hasta la entrega final de la vía: un solo contratista para todo el ciclo de la obra.</p>
         </div>
 
-        <!-- IMÁGENES DE SERVICIOS (Unsplash) — PRODUCCIÓN: reemplazar por fotos propias cuando existan -->
+        <!-- IMÁGENES DE SERVICIOS: assets/img/*.jpg (Unsplash) — PRODUCCIÓN: reemplazar por fotos propias cuando existan -->
         <div class="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           <article class="service-card reveal group relative overflow-hidden rounded-3xl bg-white shadow-soft" style="--d:0ms">
             <div class="spotlight pointer-events-none absolute inset-0 z-10"></div>
-            <div class="relative h-48 overflow-hidden bg-gradient-to-br from-navy-800 to-aqua-700"><img class="card-img h-full w-full object-cover" src="https://images.unsplash.com/photo-1686772989910-da2e602b9854?auto=format&fit=crop&w=800&h=520&q=75" alt="Excavación con maquinaria pesada" loading="lazy" /><div class="absolute inset-0 bg-gradient-to-t from-navy-950/50 to-transparent"></div></div>
+            <div class="relative h-48 overflow-hidden bg-gradient-to-br from-navy-800 to-aqua-700"><img class="card-img h-full w-full object-cover" src="assets/img/tuberia.jpg" alt="Excavación con maquinaria pesada" loading="lazy" /><div class="absolute inset-0 bg-gradient-to-t from-navy-950/50 to-transparent"></div></div>
             <div class="relative p-7 pt-0">
               <div class="card-icon -mt-7 flex h-14 w-14 items-center justify-center rounded-2xl bg-navy-900 text-white shadow-lift ring-4 ring-white">
                 <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 10h18M3 14h18M7 10V6m10 4V6M7 18v-4m10 4v-4"/></svg>
@@ -272,7 +271,7 @@
 
           <article class="service-card reveal group relative overflow-hidden rounded-3xl bg-white shadow-soft" style="--d:80ms">
             <div class="spotlight pointer-events-none absolute inset-0 z-10"></div>
-            <div class="relative h-48 overflow-hidden bg-gradient-to-br from-navy-800 to-aqua-700"><img class="card-img h-full w-full object-cover" src="https://images.unsplash.com/photo-1693907986952-3cd372e4c9d8?auto=format&fit=crop&w=800&h=520&q=75" alt="Tubería y válvulas de acueducto" loading="lazy" /><div class="absolute inset-0 bg-gradient-to-t from-navy-950/50 to-transparent"></div></div>
+            <div class="relative h-48 overflow-hidden bg-gradient-to-br from-navy-800 to-aqua-700"><img class="card-img h-full w-full object-cover" src="assets/img/acueducto.jpg" alt="Tubería y válvulas de acueducto" loading="lazy" /><div class="absolute inset-0 bg-gradient-to-t from-navy-950/50 to-transparent"></div></div>
             <div class="relative p-7 pt-0">
               <div class="card-icon -mt-7 flex h-14 w-14 items-center justify-center rounded-2xl bg-navy-900 text-white shadow-lift ring-4 ring-white">
                 <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11Z"/></svg>
@@ -289,7 +288,7 @@
 
           <article class="service-card reveal group relative overflow-hidden rounded-3xl bg-white shadow-soft" style="--d:160ms">
             <div class="spotlight pointer-events-none absolute inset-0 z-10"></div>
-            <div class="relative h-48 overflow-hidden bg-gradient-to-br from-navy-800 to-aqua-700"><img class="card-img h-full w-full object-cover" src="https://images.unsplash.com/photo-1526898943670-92bfa9f94c12?auto=format&fit=crop&w=800&h=520&q=75" alt="Agua saliendo de una tubería" loading="lazy" /><div class="absolute inset-0 bg-gradient-to-t from-navy-950/50 to-transparent"></div></div>
+            <div class="relative h-48 overflow-hidden bg-gradient-to-br from-navy-800 to-aqua-700"><img class="card-img h-full w-full object-cover" src="assets/img/vactor.jpg" alt="Agua saliendo de una tubería" loading="lazy" /><div class="absolute inset-0 bg-gradient-to-t from-navy-950/50 to-transparent"></div></div>
             <div class="relative p-7 pt-0">
               <div class="card-icon -mt-7 flex h-14 w-14 items-center justify-center rounded-2xl bg-navy-900 text-white shadow-lift ring-4 ring-white">
                 <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 12h10a4 4 0 0 1 4 4v4M4 8h10a8 8 0 0 1 8 8v4M4 8v8"/></svg>
@@ -306,7 +305,7 @@
 
           <article class="service-card reveal group relative overflow-hidden rounded-3xl bg-white shadow-soft" style="--d:0ms">
             <div class="spotlight pointer-events-none absolute inset-0 z-10"></div>
-            <div class="relative h-48 overflow-hidden bg-gradient-to-br from-navy-800 to-aqua-700"><img class="card-img h-full w-full object-cover" src="https://images.unsplash.com/photo-1790767900100-249b668f9a4b?auto=format&fit=crop&w=800&h=520&q=75" alt="Intervención de andén con zanja y maquinaria" loading="lazy" /><div class="absolute inset-0 bg-gradient-to-t from-navy-950/50 to-transparent"></div></div>
+            <div class="relative h-48 overflow-hidden bg-gradient-to-br from-navy-800 to-aqua-700"><img class="card-img h-full w-full object-cover" src="assets/img/espacio-publico.jpg" alt="Intervención de andén con zanja y maquinaria" loading="lazy" /><div class="absolute inset-0 bg-gradient-to-t from-navy-950/50 to-transparent"></div></div>
             <div class="relative p-7 pt-0">
               <div class="card-icon -mt-7 flex h-14 w-14 items-center justify-center rounded-2xl bg-navy-900 text-white shadow-lift ring-4 ring-white">
                 <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 20h18M5 20V9l7-5 7 5v11M9 20v-6h6v6"/></svg>
@@ -322,7 +321,7 @@
 
           <article class="service-card reveal group relative overflow-hidden rounded-3xl bg-white shadow-soft" style="--d:80ms">
             <div class="spotlight pointer-events-none absolute inset-0 z-10"></div>
-            <div class="relative h-48 overflow-hidden bg-gradient-to-br from-navy-800 to-aqua-700"><img class="card-img h-full w-full object-cover" src="https://images.unsplash.com/photo-1706712637075-f47fb47548f2?auto=format&fit=crop&w=800&h=520&q=75" alt="Vía con asfalto nuevo" loading="lazy" /><div class="absolute inset-0 bg-gradient-to-t from-navy-950/50 to-transparent"></div></div>
+            <div class="relative h-48 overflow-hidden bg-gradient-to-br from-navy-800 to-aqua-700"><img class="card-img h-full w-full object-cover" src="assets/img/asfalto.jpg" alt="Vía con asfalto nuevo" loading="lazy" /><div class="absolute inset-0 bg-gradient-to-t from-navy-950/50 to-transparent"></div></div>
             <div class="relative p-7 pt-0">
               <div class="card-icon -mt-7 flex h-14 w-14 items-center justify-center rounded-2xl bg-navy-900 text-white shadow-lift ring-4 ring-white">
                 <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 20 9 4m6 0 5 16M12 6v2m0 4v2m0 4v2"/></svg>
@@ -338,7 +337,7 @@
 
           <article class="service-card reveal group relative overflow-hidden rounded-3xl bg-white shadow-soft" style="--d:160ms">
             <div class="spotlight pointer-events-none absolute inset-0 z-10"></div>
-            <div class="relative h-48 overflow-hidden bg-gradient-to-br from-navy-800 to-aqua-700"><img class="card-img h-full w-full object-cover" src="https://images.unsplash.com/photo-1686772553688-92fa864cae8a?auto=format&fit=crop&w=800&h=520&q=75" alt="Excavadora moviendo tierra" loading="lazy" /><div class="absolute inset-0 bg-gradient-to-t from-navy-950/50 to-transparent"></div></div>
+            <div class="relative h-48 overflow-hidden bg-gradient-to-br from-navy-800 to-aqua-700"><img class="card-img h-full w-full object-cover" src="assets/img/movimiento.jpg" alt="Excavadora moviendo tierra" loading="lazy" /><div class="absolute inset-0 bg-gradient-to-t from-navy-950/50 to-transparent"></div></div>
             <div class="relative p-7 pt-0">
               <div class="card-icon -mt-7 flex h-14 w-14 items-center justify-center rounded-2xl bg-navy-900 text-white shadow-lift ring-4 ring-white">
                 <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 17h2l2-6h8l2 6h4M7 17a2 2 0 1 0 4 0m4 0a2 2 0 1 0 4 0M9 11V7h4l2 4"/></svg>
@@ -458,7 +457,7 @@
     <section class="px-5 lg:px-8">
       <div class="reveal reveal-scale relative mx-auto max-w-7xl overflow-hidden rounded-[2rem] bg-navy-900">
         <div class="absolute inset-0" data-parallax="0.1">
-          <img src="https://images.unsplash.com/photo-1735754334934-ebf19271f2b4?auto=format&fit=crop&w=1800&q=75" alt="" class="h-[130%] w-full object-cover opacity-60" loading="lazy" />
+          <img src="assets/img/agua.jpg" alt="" class="h-[130%] w-full object-cover opacity-60" loading="lazy" />
         </div>
         <div class="absolute inset-0 bg-gradient-to-r from-navy-950/95 via-navy-900/80 to-navy-900/20"></div>
         <div class="relative flex flex-col items-start justify-between gap-8 p-10 md:flex-row md:items-center lg:p-16">
