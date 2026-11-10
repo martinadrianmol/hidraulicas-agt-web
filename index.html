@@ -1,77 +1,58 @@
 <!DOCTYPE html>
-<html lang="es" class="scroll-smooth">
+<html lang="es">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Hidráulicas AGT S.A.S. | Acueducto, alcantarillado y obra civil en Bogotá</title>
   <meta name="description" content="Hidráulicas AGT S.A.S.: excavación e instalación de tubería, limpieza con vactor, operación de acueducto y alcantarillado, recuperación de espacio público y asfaltos bajo norma IDU en Bogotá y Cundinamarca." />
-  <meta name="theme-color" content="#0b1f3a" />
+  <meta name="theme-color" content="#15213f" />
 
-  <!-- Open Graph (PRODUCCIÓN: reemplazar URL por el dominio final) -->
+  <!-- Open Graph — PRODUCCIÓN: reemplazar TU-DOMINIO.com por el dominio final -->
+  <meta property="og:type" content="website" />
   <meta property="og:title" content="Hidráulicas AGT S.A.S." />
-  <meta property="og:description" content="Soluciones hidráulicas y de obra civil con maquinaria propia y personal calificado." />
-  <meta property="og:image" content="assets/img/flota-equipos.jpg" />
+  <meta property="og:description" content="Redes de acueducto, alcantarillado y obra civil con maquinaria propia y personal calificado." />
+  <meta property="og:image" content="https://www.TU-DOMINIO.com/assets/img/logo-agt-navy.png" />
   <meta property="og:url" content="https://www.TU-DOMINIO.com/" />
-  <link rel="icon" type="image/png" href="assets/img/logo-agt.png" />
+  <link rel="icon" type="image/png" href="assets/img/icon-agt.png" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://images.unsplash.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
 
-  <!-- Estilos compilados con Tailwind CLI (ver README) -->
+  <!-- Estilos compilados con Tailwind CLI (fuente: src/input.css — ver README) -->
   <link rel="stylesheet" href="assets/css/styles.css" />
-
-  <style>
-    /* ---- Animaciones: solo transform/opacity (aceleradas por GPU) ---- */
-    :root { --ease-out: cubic-bezier(.22,1,.36,1); }
-    .reveal { opacity: 0; transform: translateY(18px); transition: opacity .7s var(--ease-out), transform .7s var(--ease-out); transition-delay: var(--d, 0ms); }
-    .reveal.is-visible { opacity: 1; transform: none; }
-    .card-lift { transition: transform .35s var(--ease-out), box-shadow .35s var(--ease-out), border-color .35s; }
-    .card-lift:hover { transform: translateY(-4px); box-shadow: 0 2px 4px rgba(11,31,58,.06), 0 20px 40px -16px rgba(11,31,58,.25); }
-    .btn-press { transition: transform .15s var(--ease-out), background-color .2s, box-shadow .2s; }
-    .btn-press:active { transform: scale(.97); }
-    .img-zoom img { transition: transform .8s var(--ease-out); }
-    .img-zoom:hover img { transform: scale(1.04); }
-    #site-header { transition: background-color .3s, box-shadow .3s, backdrop-filter .3s; }
-    #site-header.scrolled { background: rgba(255,255,255,.86); backdrop-filter: saturate(180%) blur(14px); -webkit-backdrop-filter: saturate(180%) blur(14px); box-shadow: 0 1px 0 rgba(11,31,58,.08); }
-    #site-header.scrolled .nav-link { color: #1f3657; }
-    #site-header.scrolled .brand-text { color: #0b1f3a; }
-    #mobile-menu { transition: opacity .25s var(--ease-out), transform .25s var(--ease-out); }
-    #mobile-menu[data-open="false"] { opacity: 0; transform: translateY(-8px); pointer-events: none; }
-    .hero-bg { animation: heroZoom 18s var(--ease-out) both; }
-    @keyframes heroZoom { from { transform: scale(1.08); } to { transform: scale(1); } }
-    .wa-pulse::after { content:''; position:absolute; inset:0; border-radius:9999px; box-shadow:0 0 0 0 rgba(37,211,102,.5); animation: pulse 2.6s infinite; }
-    @keyframes pulse { 0%{ box-shadow:0 0 0 0 rgba(37,211,102,.45);} 70%{ box-shadow:0 0 0 16px rgba(37,211,102,0);} 100%{ box-shadow:0 0 0 0 rgba(37,211,102,0);} }
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after { animation: none !important; transition: none !important; }
-      .reveal { opacity: 1; transform: none; }
-    }
-  </style>
 </head>
 
-<body class="font-sans text-ink-700 bg-white antialiased">
+<body class="bg-white font-sans text-navy-700 antialiased">
+
+  <!-- Barra de progreso de lectura -->
+  <div id="scroll-progress" class="fixed inset-x-0 top-0 z-[60] h-[3px] bg-gradient-to-r from-aqua-400 to-aqua-600" aria-hidden="true"></div>
 
   <!-- =========================================================
        HEADER / NAVEGACIÓN
   ========================================================== -->
   <header id="site-header" class="fixed inset-x-0 top-0 z-50">
     <nav class="mx-auto flex max-w-7xl items-center justify-between px-5 py-3 lg:px-8" aria-label="Principal">
-      <a href="#inicio" class="flex items-center gap-3">
-        <!-- LOGO: reemplazar por versión vectorial (SVG) si la tienen -->
-        <img src="assets/img/logo-agt.png" alt="Logo Hidráulicas AGT" class="h-10 w-auto rounded-md" width="55" height="40" />
-        <span class="brand-text font-display text-lg font-extrabold tracking-tight text-white">Hidráulicas AGT</span>
+      <a href="#inicio" class="relative block h-12 w-[108px]" aria-label="Hidráulicas AGT, ir al inicio">
+        <!-- LOGO: versión blanca (sobre fondos oscuros) y azul (sobre fondo claro) -->
+        <img src="assets/img/logo-agt-white.png" alt="Hidráulicas AGT S.A.S." class="logo-white absolute inset-0 h-full w-full object-contain" width="1226" height="549" />
+        <img src="assets/img/logo-agt-navy.png" alt="" aria-hidden="true" class="logo-navy absolute inset-0 h-full w-full object-contain" width="1226" height="549" />
       </a>
 
-      <ul class="hidden items-center gap-8 lg:flex">
-        <li><a href="#nosotros" class="nav-link text-sm font-medium text-white/85 hover:text-accent-400">Nosotros</a></li>
-        <li><a href="#servicios" class="nav-link text-sm font-medium text-white/85 hover:text-accent-400">Servicios</a></li>
-        <li><a href="#diferencial" class="nav-link text-sm font-medium text-white/85 hover:text-accent-400">Por qué AGT</a></li>
-        <li><a href="#proyectos" class="nav-link text-sm font-medium text-white/85 hover:text-accent-400">Proyectos</a></li>
-        <li><a href="#contacto" class="nav-link text-sm font-medium text-white/85 hover:text-accent-400">Contacto</a></li>
+      <ul class="hidden items-center gap-9 lg:flex">
+        <li><a href="#nosotros" class="nav-link text-sm font-medium text-white/85 transition-colors hover:text-white">Nosotros</a></li>
+        <li><a href="#servicios" class="nav-link text-sm font-medium text-white/85 transition-colors hover:text-white">Servicios</a></li>
+        <li><a href="#operacion" class="nav-link text-sm font-medium text-white/85 transition-colors hover:text-white">Cómo operamos</a></li>
+        <li><a href="#clientes" class="nav-link text-sm font-medium text-white/85 transition-colors hover:text-white">Clientes</a></li>
+        <li><a href="#contacto" class="nav-link text-sm font-medium text-white/85 transition-colors hover:text-white">Contacto</a></li>
       </ul>
 
       <div class="flex items-center gap-3">
-        <a href="#contacto" class="btn-press hidden rounded-full bg-accent-500 px-5 py-2.5 text-sm font-semibold text-white shadow-soft hover:bg-accent-600 sm:inline-flex">Cotizar proyecto</a>
+        <a href="#contacto" class="btn btn-shine hidden items-center gap-2 rounded-full bg-aqua-500 px-5 py-2.5 text-sm font-semibold text-white shadow-soft hover:bg-aqua-600 sm:inline-flex">
+          Cotizar proyecto
+          <svg class="arrow h-4 w-4" fill="none" stroke="currentColor" stroke-width="2.4" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-6-6 6 6-6 6"/></svg>
+        </a>
         <button id="menu-btn" class="nav-link inline-flex h-10 w-10 items-center justify-center rounded-lg text-white lg:hidden" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-menu">
           <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16"/></svg>
         </button>
@@ -79,14 +60,14 @@
     </nav>
 
     <!-- Menú móvil -->
-    <div id="mobile-menu" data-open="false" class="absolute inset-x-3 top-[68px] rounded-2xl bg-white p-4 shadow-soft lg:hidden">
-      <ul class="flex flex-col text-ink-800">
-        <li><a href="#nosotros" class="block rounded-lg px-4 py-3 font-medium hover:bg-brand-50">Nosotros</a></li>
-        <li><a href="#servicios" class="block rounded-lg px-4 py-3 font-medium hover:bg-brand-50">Servicios</a></li>
-        <li><a href="#diferencial" class="block rounded-lg px-4 py-3 font-medium hover:bg-brand-50">Por qué AGT</a></li>
-        <li><a href="#proyectos" class="block rounded-lg px-4 py-3 font-medium hover:bg-brand-50">Proyectos</a></li>
-        <li><a href="#contacto" class="block rounded-lg px-4 py-3 font-medium hover:bg-brand-50">Contacto</a></li>
-        <li class="pt-2"><a href="#contacto" class="block rounded-full bg-accent-500 px-4 py-3 text-center font-semibold text-white">Cotizar proyecto</a></li>
+    <div id="mobile-menu" data-open="false" class="absolute inset-x-3 top-[72px] rounded-2xl bg-white p-3 shadow-lift lg:hidden">
+      <ul class="flex flex-col text-navy-800">
+        <li><a href="#nosotros" class="block rounded-xl px-4 py-3 font-medium hover:bg-aqua-50">Nosotros</a></li>
+        <li><a href="#servicios" class="block rounded-xl px-4 py-3 font-medium hover:bg-aqua-50">Servicios</a></li>
+        <li><a href="#operacion" class="block rounded-xl px-4 py-3 font-medium hover:bg-aqua-50">Cómo operamos</a></li>
+        <li><a href="#clientes" class="block rounded-xl px-4 py-3 font-medium hover:bg-aqua-50">Clientes</a></li>
+        <li><a href="#contacto" class="block rounded-xl px-4 py-3 font-medium hover:bg-aqua-50">Contacto</a></li>
+        <li class="pt-2"><a href="#contacto" class="block rounded-full bg-aqua-500 px-4 py-3 text-center font-semibold text-white">Cotizar proyecto</a></li>
       </ul>
     </div>
   </header>
@@ -95,38 +76,93 @@
     <!-- =========================================================
          HERO
     ========================================================== -->
-    <section id="inicio" class="relative isolate flex min-h-[92vh] items-center overflow-hidden bg-ink-900">
-      <!-- IMAGEN HERO: reemplazar por foto de alta resolución (mín. 1920px de ancho) -->
-      <img src="assets/img/flota-equipos.jpg" alt="Flota de vehículos y equipos de Hidráulicas AGT" class="hero-bg absolute inset-0 -z-10 h-full w-full object-cover" />
-      <div class="absolute inset-0 -z-10 bg-gradient-to-r from-ink-900 via-ink-900/85 to-ink-900/40"></div>
-      <div class="absolute inset-x-0 bottom-0 -z-10 h-40 bg-gradient-to-t from-ink-900/70 to-transparent"></div>
+    <section id="inicio" class="relative isolate flex min-h-[100svh] items-center overflow-hidden bg-navy-950">
+      <!-- IMAGEN HERO (Unsplash). PRODUCCIÓN: idealmente una foto propia de obra a 1920 px -->
+      <div class="absolute inset-0 -z-20" data-parallax="0.25">
+        <img class="hero-media h-full w-full object-cover"
+             src="https://images.unsplash.com/photo-1583841668932-a7c3250a6e37?auto=format&fit=crop&w=2000&q=80"
+             srcset="https://images.unsplash.com/photo-1583841668932-a7c3250a6e37?auto=format&fit=crop&w=900&q=75 900w, https://images.unsplash.com/photo-1583841668932-a7c3250a6e37?auto=format&fit=crop&w=1600&q=80 1600w, https://images.unsplash.com/photo-1583841668932-a7c3250a6e37?auto=format&fit=crop&w=2400&q=80 2400w"
+             sizes="100vw" alt="Excavadora trabajando en una obra urbana" fetchpriority="high" />
+      </div>
+      <div class="absolute inset-0 -z-10 bg-gradient-to-r from-navy-950 via-navy-950/85 to-navy-900/40"></div>
+      <div class="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top_right,rgba(43,125,233,.28),transparent_55%)]"></div>
 
-      <div class="mx-auto w-full max-w-7xl px-5 pt-28 pb-20 lg:px-8">
-        <div class="max-w-2xl">
-          <p class="reveal mb-5 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-xs font-semibold uppercase tracking-[.14em] text-brand-100">
-            <span class="h-1.5 w-1.5 rounded-full bg-accent-400"></span> Bogotá y Cundinamarca · Desde 2016
+      <!-- Gota de agua animada (elemento de la marca) -->
+      <svg class="pointer-events-none absolute right-0 top-[16%] hidden h-[300px] w-[300px] lg:block xl:right-[4%]" viewBox="0 0 300 300" aria-hidden="true">
+        <!-- Grifo inspirado en el logo -->
+        <path d="M300 46 H150 a42 42 0 0 0 -42 42 V112" fill="none" stroke="rgba(255,255,255,.16)" stroke-width="22" stroke-linecap="butt"/>
+        <path d="M300 46 H150 a42 42 0 0 0 -42 42 V112" fill="none" stroke="rgba(132,189,255,.35)" stroke-width="2" transform="translate(-6 -6)"/>
+        <rect x="80" y="112" width="56" height="14" rx="4" fill="rgba(255,255,255,.22)"/>
+        <g class="drop"><path d="M108 136 c0 0 -11 14 -11 22 a11 11 0 0 0 22 0 c0 -8 -11 -22 -11 -22z" fill="#4f9cf7"/></g>
+        <ellipse class="ripple" cx="108" cy="290" rx="50" ry="9" fill="none" stroke="#84bdff" stroke-width="2"/>
+        <ellipse class="ripple ripple-2" cx="108" cy="290" rx="50" ry="9" fill="none" stroke="#84bdff" stroke-width="1.5"/>
+        <ellipse class="ripple ripple-3" cx="108" cy="290" rx="50" ry="9" fill="none" stroke="#84bdff" stroke-width="1"/>
+      </svg>
+
+      <div class="mx-auto w-full max-w-7xl px-5 pb-32 pt-32 lg:px-8">
+        <div class="max-w-3xl">
+          <p class="fade-up mb-6 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-xs font-semibold uppercase tracking-[.16em] text-aqua-100 backdrop-blur" style="--d:100ms">
+            <span class="relative flex h-2 w-2"><span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-aqua-400 opacity-60"></span><span class="relative inline-flex h-2 w-2 rounded-full bg-aqua-400"></span></span>
+            Bogotá y Cundinamarca · Desde 2016
           </p>
-          <h1 class="reveal font-display text-4xl font-extrabold leading-[1.08] tracking-tight text-white sm:text-5xl lg:text-6xl" style="--d:80ms">
-            Redes de acueducto y alcantarillado <span class="text-accent-400">hechas para durar.</span>
+          <h1 class="font-display text-[2.6rem] font-extrabold leading-[1.05] tracking-tight text-white sm:text-6xl lg:text-7xl" data-split>
+            <span class="split-line">Redes de acueducto</span>
+            <span class="split-line">y alcantarillado</span>
+            <span class="split-line text-aqua-300">hechas para durar.</span>
           </h1>
-          <p class="reveal mt-6 max-w-xl text-lg leading-relaxed text-white/75" style="--d:160ms">
+          <p class="fade-up mt-7 max-w-xl text-lg leading-relaxed text-white/75" style="--d:750ms">
             Construimos, operamos y mantenemos sistemas hidráulicos y obras civiles con maquinaria propia, personal calificado y ejecución bajo norma IDU y tiempos EAAB.
           </p>
-          <div class="reveal mt-9 flex flex-col gap-3 sm:flex-row" style="--d:240ms">
-            <a href="#contacto" class="btn-press inline-flex items-center justify-center gap-2 rounded-full bg-accent-500 px-7 py-3.5 font-semibold text-white shadow-lg shadow-accent-500/25 hover:bg-accent-600">
+          <div class="fade-up mt-10 flex flex-col gap-3 sm:flex-row" style="--d:900ms">
+            <a href="#contacto" class="btn btn-shine inline-flex items-center justify-center gap-2 rounded-full bg-aqua-500 px-7 py-4 font-semibold text-white shadow-lg shadow-aqua-500/30 hover:bg-aqua-600" data-magnetic>
               Cotizar ahora
-              <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2.4" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-6-6 6 6-6 6"/></svg>
+              <svg class="arrow h-4 w-4" fill="none" stroke="currentColor" stroke-width="2.4" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-6-6 6 6-6 6"/></svg>
             </a>
-            <a href="#servicios" class="btn-press inline-flex items-center justify-center rounded-full border border-white/25 px-7 py-3.5 font-semibold text-white hover:bg-white/10">Ver servicios</a>
+            <a href="#servicios" class="btn inline-flex items-center justify-center rounded-full border border-white/25 px-7 py-4 font-semibold text-white hover:bg-white/10">Ver servicios</a>
           </div>
         </div>
+      </div>
 
-        <!-- Indicadores (datos reales del portafolio y registro mercantil) -->
-        <dl class="reveal mt-16 grid max-w-3xl grid-cols-2 gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/10 sm:grid-cols-4" style="--d:320ms">
-          <div class="bg-ink-900/60 p-5 backdrop-blur"><dt class="text-xs text-white/60">Experiencia</dt><dd class="font-display text-2xl font-bold text-white">Desde 2016</dd></div>
-          <div class="bg-ink-900/60 p-5 backdrop-blur"><dt class="text-xs text-white/60">Logística EAAB</dt><dd class="font-display text-2xl font-bold text-white">36 horas</dd></div>
-          <div class="bg-ink-900/60 p-5 backdrop-blur"><dt class="text-xs text-white/60">Zonas acueducto</dt><dd class="font-display text-2xl font-bold text-white">1, 2, 3 y 5</dd></div>
-          <div class="bg-ink-900/60 p-5 backdrop-blur"><dt class="text-xs text-white/60">Normatividad</dt><dd class="font-display text-2xl font-bold text-white">IDU</dd></div>
+      <!-- Indicador de scroll -->
+      <a href="#nosotros" class="fade-up absolute bottom-28 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-2 text-[11px] uppercase tracking-[.2em] text-white/50 md:flex" style="--d:1300ms" aria-label="Bajar a la siguiente sección">
+        <span class="flex h-9 w-5 justify-center rounded-full border border-white/30 pt-1.5"><span class="scroll-dot h-1.5 w-1.5 rounded-full bg-white/80"></span></span>
+      </a>
+
+      <!-- Olas animadas -->
+      <div class="pointer-events-none absolute inset-x-0 bottom-0 h-24 overflow-hidden" aria-hidden="true">
+        <div class="wave-track slow absolute bottom-0 flex w-[200%]">
+          <svg class="h-24 w-1/2" viewBox="0 0 1440 96" preserveAspectRatio="none"><path fill="rgba(255,255,255,.12)" d="M0 56 Q180 24 360 56 T720 56 T1080 56 T1440 56 V96 H0Z"/></svg>
+          <svg class="h-24 w-1/2" viewBox="0 0 1440 96" preserveAspectRatio="none"><path fill="rgba(255,255,255,.12)" d="M0 56 Q180 24 360 56 T720 56 T1080 56 T1440 56 V96 H0Z"/></svg>
+        </div>
+        <div class="wave-track absolute bottom-0 flex w-[200%]">
+          <svg class="h-20 w-1/2" viewBox="0 0 1440 80" preserveAspectRatio="none"><path fill="#ffffff" d="M0 44 Q360 12 720 44 T1440 44 V80 H0Z"/></svg>
+          <svg class="h-20 w-1/2" viewBox="0 0 1440 80" preserveAspectRatio="none"><path fill="#ffffff" d="M0 44 Q360 12 720 44 T1440 44 V80 H0Z"/></svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         CIFRAS (contadores animados — datos reales)
+    ========================================================== -->
+    <section class="relative z-10 -mt-2 bg-white" aria-label="Cifras de la empresa">
+      <div class="mx-auto max-w-6xl px-5 lg:px-8">
+        <dl class="grid grid-cols-2 gap-y-10 border-b border-navy-100 pb-14 pt-6 text-center md:grid-cols-4">
+          <div class="reveal" style="--d:0ms">
+            <dd class="font-display text-4xl font-extrabold text-navy-900 sm:text-5xl"><span data-count data-from-year="2016">10</span><span class="text-aqua-500">+</span></dd>
+            <dt class="mt-2 text-sm text-navy-500">años de trayectoria</dt>
+          </div>
+          <div class="reveal" style="--d:80ms">
+            <dd class="font-display text-4xl font-extrabold text-navy-900 sm:text-5xl"><span data-count="36">36</span><span class="text-aqua-500">h</span></dd>
+            <dt class="mt-2 text-sm text-navy-500">logística en tiempos EAAB</dt>
+          </div>
+          <div class="reveal" style="--d:160ms">
+            <dd class="font-display text-4xl font-extrabold text-navy-900 sm:text-5xl"><span data-count="6">6</span></dd>
+            <dt class="mt-2 text-sm text-navy-500">líneas de servicio</dt>
+          </div>
+          <div class="reveal" style="--d:240ms">
+            <dd class="font-display text-4xl font-extrabold text-navy-900 sm:text-5xl"><span data-count="14">14</span><span class="text-aqua-500">+</span></dd>
+            <dt class="mt-2 text-sm text-navy-500">empresas clientes</dt>
+          </div>
         </dl>
       </div>
     </section>
@@ -135,179 +171,52 @@
          QUIÉNES SOMOS
     ========================================================== -->
     <section id="nosotros" class="py-24 lg:py-32">
-      <div class="mx-auto grid max-w-7xl items-center gap-14 px-5 lg:grid-cols-2 lg:px-8">
-        <div class="reveal relative">
-          <div class="img-zoom overflow-hidden rounded-3xl shadow-soft">
-            <!-- IMAGEN: foto de equipo de trabajo u obra (recomendado 1200x900) -->
-            <img src="assets/img/obra-espacio-publico.jpg" alt="Obra de recuperación de espacio público ejecutada por Hidráulicas AGT" class="aspect-[4/3] w-full object-cover" loading="lazy" />
+      <div class="mx-auto grid max-w-7xl items-center gap-16 px-5 lg:grid-cols-2 lg:px-8">
+        <div class="relative">
+          <div class="reveal-clip overflow-hidden rounded-3xl shadow-lift">
+            <!-- IMAGEN (Unsplash) — PRODUCCIÓN: foto del equipo propio -->
+            <img src="https://images.unsplash.com/photo-1759542878135-bc80368e74ef?auto=format&fit=crop&w=1200&h=1000&q=80" alt="Cuadrilla de trabajadores en obra" class="aspect-[6/5] w-full object-cover" loading="lazy" />
           </div>
-          <div class="absolute -bottom-6 -right-2 hidden max-w-[240px] rounded-2xl bg-white p-5 shadow-soft sm:block lg:-right-6">
-            <p class="font-display text-sm font-bold text-ink-900">Maquinaria y equipos propios</p>
-            <p class="mt-1 text-sm text-ink-500">Para entregar cada proyecto con calidad y puntualidad.</p>
+          <div class="reveal reveal-right absolute -bottom-8 -right-3 hidden max-w-[260px] rounded-2xl bg-white p-5 shadow-lift sm:block lg:-right-8" style="--d:500ms">
+            <div class="flex items-center gap-3">
+              <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-aqua-50 text-aqua-600">
+                <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 17h2l2-6h8l2 6h4M7 17a2 2 0 1 0 4 0m4 0a2 2 0 1 0 4 0"/></svg>
+              </span>
+              <p class="font-display text-sm font-bold text-navy-900">Maquinaria y equipos propios</p>
+            </div>
+            <p class="mt-2 text-sm text-navy-500">Para entregar cada proyecto con calidad y puntualidad.</p>
           </div>
+          <div class="pointer-events-none absolute -left-6 -top-6 -z-10 h-32 w-32 rounded-3xl bg-aqua-100" data-parallax="-0.08" aria-hidden="true"></div>
         </div>
 
         <div>
-          <p class="reveal text-sm font-semibold uppercase tracking-[.14em] text-brand-600">Quiénes somos</p>
-          <h2 class="reveal mt-3 font-display text-3xl font-extrabold tracking-tight text-ink-900 sm:text-4xl" style="--d:60ms">Ingeniería hidráulica al servicio del agua potable y la ciudad</h2>
-          <p class="reveal mt-6 leading-relaxed text-ink-500" style="--d:120ms">
+          <p class="reveal text-sm font-semibold uppercase tracking-[.16em] text-aqua-600">Quiénes somos</p>
+          <h2 class="reveal mt-3 font-display text-3xl font-extrabold tracking-tight text-navy-900 sm:text-[2.6rem] sm:leading-tight" style="--d:60ms">Ingeniería hidráulica al servicio del agua potable y la ciudad</h2>
+          <p class="reveal mt-6 leading-relaxed text-navy-500" style="--d:120ms">
             Hidráulicas AGT S.A.S. nació para atender las necesidades esenciales del agua potable: construcción, operación y administración de sistemas de acueducto, alcantarillado y aseo. Acompañamos a empresas de servicios públicos y ejecutamos proyectos de obra civil, obra vertical, recuperación de espacio público y reparaciones locativas.
           </p>
 
-          <div class="mt-10 grid gap-4 sm:grid-cols-2">
-            <div class="reveal rounded-2xl border border-ink-300/30 bg-brand-50/50 p-6" style="--d:160ms">
-              <h3 class="font-display font-bold text-ink-900">Misión</h3>
-              <p class="mt-2 text-sm leading-relaxed text-ink-500">Desarrollar proyectos en redes de distribución de servicios domiciliarios, ofreciendo calidad a nuestros clientes y respeto por el medio ambiente.</p>
+          <!-- Pestañas Misión / Visión / Valores -->
+          <div class="reveal mt-10" style="--d:180ms">
+            <div class="relative inline-flex rounded-full bg-navy-50 p-1" role="tablist" aria-label="Nuestra identidad">
+              <span id="tab-indicator" class="absolute inset-y-1 left-1 rounded-full bg-white shadow-soft" style="transition: transform .3s var(--ease-out), width .3s var(--ease-out);" aria-hidden="true"></span>
+              <button class="tab relative z-10 rounded-full px-5 py-2 text-sm font-semibold text-navy-900" role="tab" aria-selected="true" aria-controls="panel-mision" id="tab-mision">Misión</button>
+              <button class="tab relative z-10 rounded-full px-5 py-2 text-sm font-semibold text-navy-500" role="tab" aria-selected="false" aria-controls="panel-vision" id="tab-vision">Visión</button>
+              <button class="tab relative z-10 rounded-full px-5 py-2 text-sm font-semibold text-navy-500" role="tab" aria-selected="false" aria-controls="panel-valores" id="tab-valores">Valores</button>
             </div>
-            <div class="reveal rounded-2xl border border-ink-300/30 bg-brand-50/50 p-6" style="--d:220ms">
-              <h3 class="font-display font-bold text-ink-900">Visión</h3>
-              <p class="mt-2 text-sm leading-relaxed text-ink-500">Ser una empresa líder a nivel nacional en proyectos que impulsen la construcción hidráulica y el bien común.</p>
-            </div>
-          </div>
-
-          <ul class="mt-8 space-y-3">
-            <li class="reveal flex gap-3" style="--d:260ms"><span class="mt-1 flex h-5 w-5 flex-none items-center justify-center rounded-full bg-accent-500/15 text-accent-600"><svg class="h-3 w-3" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path d="m5 13 4 4L19 7"/></svg></span><p class="text-sm text-ink-500"><strong class="text-ink-800">Responsabilidad</strong> en cada labor encomendada, con lo mejor de nuestro equipo.</p></li>
-            <li class="reveal flex gap-3" style="--d:300ms"><span class="mt-1 flex h-5 w-5 flex-none items-center justify-center rounded-full bg-accent-500/15 text-accent-600"><svg class="h-3 w-3" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path d="m5 13 4 4L19 7"/></svg></span><p class="text-sm text-ink-500"><strong class="text-ink-800">Compromiso</strong> con los clientes y con el entorno donde ejecutamos cada proyecto.</p></li>
-            <li class="reveal flex gap-3" style="--d:340ms"><span class="mt-1 flex h-5 w-5 flex-none items-center justify-center rounded-full bg-accent-500/15 text-accent-600"><svg class="h-3 w-3" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path d="m5 13 4 4L19 7"/></svg></span><p class="text-sm text-ink-500"><strong class="text-ink-800">Atención personalizada</strong> para mejorar continuamente nuestro sistema de calidad.</p></li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- =========================================================
-         SERVICIOS
-    ========================================================== -->
-    <section id="servicios" class="bg-slate-50 py-24 lg:py-32">
-      <div class="mx-auto max-w-7xl px-5 lg:px-8">
-        <div class="mx-auto max-w-2xl text-center">
-          <p class="reveal text-sm font-semibold uppercase tracking-[.14em] text-brand-600">Servicios</p>
-          <h2 class="reveal mt-3 font-display text-3xl font-extrabold tracking-tight text-ink-900 sm:text-4xl" style="--d:60ms">Soluciones integrales bajo tierra y en superficie</h2>
-          <p class="reveal mt-4 text-ink-500" style="--d:120ms">Desde la excavación hasta la entrega final de la vía: un solo contratista para todo el ciclo de la obra.</p>
-        </div>
-
-        <div class="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3" id="services-grid">
-          <!-- 1 -->
-          <article class="service-card reveal card-lift group rounded-3xl border border-ink-300/25 bg-white p-7">
-            <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-brand-500 text-white">
-              <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 10h18M3 14h18M7 10V6m10 4V6M7 18v-4m10 4v-4"/></svg>
-            </div>
-            <h3 class="mt-6 font-display text-xl font-bold text-ink-900">Excavación e instalación de tubería a gran profundidad</h3>
-            <p class="mt-3 text-sm leading-relaxed text-ink-500">Instalación de tuberías y construcción de cajas de inspección para alcantarillado pluvial y aguas negras. Domiciliarias en todos los tamaños.</p>
-            <ul class="service-more mt-4 space-y-1.5 text-sm text-ink-500">
-              <li>• Conexión a sistemas de alcantarillado</li>
-              <li>• Intervención con misil sobre asfalto, concreto o zona verde</li>
-              <li>• Experiencia directa en zonas 1, 2, 3 y 5</li>
-            </ul>
-          </article>
-          <!-- 2 -->
-          <article class="service-card reveal card-lift group rounded-3xl border border-ink-300/25 bg-white p-7" style="--d:80ms">
-            <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-brand-500 text-white">
-              <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11Z"/></svg>
-            </div>
-            <h3 class="mt-6 font-display text-xl font-bold text-ink-900">Operación de acueducto y alcantarillado</h3>
-            <p class="mt-3 text-sm leading-relaxed text-ink-500">Experiencia como operadores en Cundinamarca: captación, conducción, tratamiento y distribución de agua potable, más mantenimiento del alcantarillado.</p>
-            <ul class="service-more mt-4 space-y-1.5 text-sm text-ink-500">
-              <li>• Lectura, facturación, cortes y reconexiones</li>
-              <li>• Nuevas acometidas y atención de PQR</li>
-              <li>• Atención al usuario y actividades conexas</li>
-            </ul>
-          </article>
-          <!-- 3 -->
-          <article class="service-card reveal card-lift group rounded-3xl border border-ink-300/25 bg-white p-7" style="--d:160ms">
-            <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-brand-500 text-white">
-              <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 12h10a4 4 0 0 1 4 4v4M4 8h10a8 8 0 0 1 8 8v4M4 8v8"/></svg>
-            </div>
-            <h3 class="mt-6 font-display text-xl font-bold text-ink-900">Limpieza de tuberías con vactor</h3>
-            <p class="mt-3 text-sm leading-relaxed text-ink-500">Succión y limpieza a presión para mantener las redes libres de obstrucciones y operando a plena capacidad.</p>
-            <ul class="service-more mt-4 space-y-1.5 text-sm text-ink-500">
-              <li>• Redes principales de acueducto y aguas negras</li>
-              <li>• Cajas de inspección y pozos</li>
-              <li>• Domiciliarias existentes</li>
-            </ul>
-          </article>
-          <!-- 4 -->
-          <article class="service-card reveal card-lift group rounded-3xl border border-ink-300/25 bg-white p-7">
-            <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-brand-500 text-white">
-              <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 20h18M5 20V9l7-5 7 5v11M9 20v-6h6v6"/></svg>
-            </div>
-            <h3 class="mt-6 font-display text-xl font-bold text-ink-900">Recuperación de espacio público</h3>
-            <p class="mt-3 text-sm leading-relaxed text-ink-500">Especialistas en reparación de andenes en tableta, granito, concreto, mármol y zonas verdes, con calidad y eficiencia bajo norma IDU.</p>
-            <ul class="service-more mt-4 space-y-1.5 text-sm text-ink-500">
-              <li>• Obra vertical y reparaciones locativas</li>
-              <li>• Acabados en cualquier tipo de material</li>
-            </ul>
-          </article>
-          <!-- 5 -->
-          <article class="service-card reveal card-lift group rounded-3xl border border-ink-300/25 bg-white p-7" style="--d:80ms">
-            <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-brand-500 text-white">
-              <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 20 9 4m6 0 5 16M12 6v2m0 4v2m0 4v2"/></svg>
-            </div>
-            <h3 class="mt-6 font-display text-xl font-bold text-ink-900">Aplicación de asfaltos</h3>
-            <p class="mt-3 text-sm leading-relaxed text-ink-500">Pavimentación de vías según especificación bajo norma IDU, en los tamaños y bases requeridos por cada proyecto.</p>
-            <ul class="service-more mt-4 space-y-1.5 text-sm text-ink-500">
-              <li>• Cortes, rellenos y compactación</li>
-              <li>• Maquinaria especializada y materiales de calidad</li>
-            </ul>
-          </article>
-          <!-- 6 -->
-          <article class="service-card reveal card-lift group rounded-3xl border border-ink-300/25 bg-white p-7" style="--d:160ms">
-            <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-brand-500 text-white">
-              <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 17h2l2-6h8l2 6h4M7 17a2 2 0 1 0 4 0m4 0a2 2 0 1 0 4 0M9 11V7h4l2 4"/></svg>
-            </div>
-            <h3 class="mt-6 font-display text-xl font-bold text-ink-900">Movimiento de material</h3>
-            <p class="mt-3 text-sm leading-relaxed text-ink-500">Gestión completa de tierras y escombros, con disposición ecológica en sitios autorizados.</p>
-            <ul class="service-more mt-4 space-y-1.5 text-sm text-ink-500">
-              <li>• Retiro de tierras, escombros y excavaciones</li>
-              <li>• Rellenos en bases granulares y compactación</li>
-              <li>• Cortes en todo tipo de material</li>
-            </ul>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- =========================================================
-         POR QUÉ ELEGIRNOS
-    ========================================================== -->
-    <section id="diferencial" class="relative overflow-hidden bg-ink-900 py-24 text-white lg:py-32">
-      <div class="pointer-events-none absolute -right-40 -top-40 h-[480px] w-[480px] rounded-full bg-brand-600/30 blur-3xl"></div>
-      <div class="relative mx-auto max-w-7xl px-5 lg:px-8">
-        <div class="grid gap-14 lg:grid-cols-[1fr_1.3fr]">
-          <div>
-            <p class="reveal text-sm font-semibold uppercase tracking-[.14em] text-accent-400">Por qué elegirnos</p>
-            <h2 class="reveal mt-3 font-display text-3xl font-extrabold tracking-tight sm:text-4xl" style="--d:60ms">Respuesta rápida, ejecución ordenada y cero improvisación</h2>
-            <p class="reveal mt-5 leading-relaxed text-white/70" style="--d:120ms">Nuestra logística está diseñada para cumplir los tiempos de la Empresa de Acueducto y Alcantarillado de Bogotá (EAAB), con cobertura integrada en todas las zonas de la ciudad y optimización de recursos.</p>
-            <a href="#contacto" class="reveal btn-press mt-8 inline-flex rounded-full bg-white px-6 py-3 font-semibold text-ink-900 hover:bg-brand-50" style="--d:180ms">Hablar con un experto</a>
-          </div>
-
-          <div class="grid gap-4 sm:grid-cols-2">
-            <div class="reveal rounded-2xl border border-white/10 bg-white/[.04] p-6">
-              <p class="font-display text-3xl font-extrabold text-accent-400">36 h</p>
-              <h3 class="mt-2 font-semibold">Logística en tiempos EAAB</h3>
-              <p class="mt-1.5 text-sm text-white/60">Ejecución en ventanas de 36 horas con planeación por zonas.</p>
-            </div>
-            <div class="reveal rounded-2xl border border-white/10 bg-white/[.04] p-6" style="--d:80ms">
-              <p class="font-display text-3xl font-extrabold text-accent-400">24/7</p>
-              <h3 class="mt-2 font-semibold">Comunicación permanente</h3>
-              <p class="mt-1.5 text-sm text-white/60">Radiocomunicación, correo electrónico y zonificación las 24 horas.</p>
-            </div>
-            <div class="reveal rounded-2xl border border-white/10 bg-white/[.04] p-6" style="--d:160ms">
-              <svg class="h-8 w-8 text-accent-400" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6M7 4h10a2 2 0 0 1 2 2v14l-3-2-2 2-2-2-2 2-2-2-3 2V6a2 2 0 0 1 2-2Z"/></svg>
-              <h3 class="mt-3 font-semibold">Permisos y planes al día</h3>
-              <p class="mt-1.5 text-sm text-white/60">Licencias de excavación, planes de manejo de tráfico y planes de contingencia.</p>
-            </div>
-            <div class="reveal rounded-2xl border border-white/10 bg-white/[.04] p-6" style="--d:240ms">
-              <svg class="h-8 w-8 text-accent-400" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a4 4 0 0 0-5-3.9M9 20H2v-2a4 4 0 0 1 7-2.6M15 7a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm6 3a2 2 0 1 1-4 0 2 2 0 0 1 4 0ZM7 10a2 2 0 1 1-4 0 2 2 0 0 1 4 0Z"/></svg>
-              <h3 class="mt-3 font-semibold">Equipo propio y capacitado</h3>
-              <p class="mt-1.5 text-sm text-white/60">Recurso humano y técnico idóneo, con maquinaria y equipos propios.</p>
-            </div>
-            <div class="reveal rounded-2xl border border-white/10 bg-white/[.04] p-6 sm:col-span-2" style="--d:120ms">
-              <div class="flex items-start gap-4">
-                <svg class="h-8 w-8 flex-none text-accent-400" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21c4.5-2 7-5.5 7-10V5l-7-2-7 2v6c0 4.5 2.5 8 7 10Zm-3-9 2 2 4-4"/></svg>
-                <div>
-                  <h3 class="font-semibold">Calidad bajo norma y respeto ambiental</h3>
-                  <p class="mt-1.5 text-sm text-white/60">Trabajos bajo especificaciones IDU y disposición ecológica de materiales en sitios autorizados.</p>
-                </div>
+            <div class="relative mt-6 min-h-[150px]">
+              <div id="panel-mision" role="tabpanel" aria-labelledby="tab-mision" class="tab-panel">
+                <p class="leading-relaxed text-navy-500">Desarrollar y contribuir a proyectos en redes de distribución de servicios domiciliarios a nivel local, ofreciendo calidad a nuestros clientes y respeto por el medio ambiente.</p>
+              </div>
+              <div id="panel-vision" role="tabpanel" aria-labelledby="tab-vision" class="tab-panel" hidden>
+                <p class="leading-relaxed text-navy-500">Ser una empresa líder a nivel nacional en la realización de proyectos que impulsen la construcción hidráulica y el bien común.</p>
+              </div>
+              <div id="panel-valores" role="tabpanel" aria-labelledby="tab-valores" class="tab-panel" hidden>
+                <ul class="space-y-3 text-navy-500">
+                  <li><strong class="text-navy-900">Responsabilidad</strong> en cada labor encomendada, con lo mejor de nuestro equipo.</li>
+                  <li><strong class="text-navy-900">Compromiso</strong> con los clientes y con el entorno donde ejecutamos cada proyecto.</li>
+                  <li><strong class="text-navy-900">Atención personalizada</strong> para mejorar continuamente nuestro sistema de calidad.</li>
+                </ul>
               </div>
             </div>
           </div>
@@ -316,68 +225,238 @@
     </section>
 
     <!-- =========================================================
-         PROYECTOS / CLIENTES
+         SERVICIOS
     ========================================================== -->
-    <section id="proyectos" class="py-24 lg:py-32">
+    <section id="servicios" class="relative bg-navy-50 py-24 lg:py-32">
       <div class="mx-auto max-w-7xl px-5 lg:px-8">
         <div class="flex flex-col justify-between gap-6 md:flex-row md:items-end">
           <div class="max-w-2xl">
-            <p class="reveal text-sm font-semibold uppercase tracking-[.14em] text-brand-600">Proyectos</p>
-            <h2 class="reveal mt-3 font-display text-3xl font-extrabold tracking-tight text-ink-900 sm:text-4xl" style="--d:60ms">Nuestro trabajo en campo</h2>
+            <p class="reveal text-sm font-semibold uppercase tracking-[.16em] text-aqua-600">Servicios</p>
+            <h2 class="reveal mt-3 font-display text-3xl font-extrabold tracking-tight text-navy-900 sm:text-[2.6rem] sm:leading-tight" style="--d:60ms">Soluciones integrales bajo tierra y en superficie</h2>
           </div>
-          <p class="reveal max-w-md text-ink-500" style="--d:120ms">Una muestra de las obras que ejecutamos a diario en Bogotá y Cundinamarca.</p>
+          <p class="reveal max-w-md text-navy-500" style="--d:120ms">Desde la excavación hasta la entrega final de la vía: un solo contratista para todo el ciclo de la obra.</p>
         </div>
 
-        <!-- GALERÍA: reemplazar/añadir fotos reales de proyectos (recomendado 1200x900, .webp) -->
-        <div class="mt-12 grid gap-5 md:grid-cols-3 md:grid-rows-2">
-          <figure class="reveal img-zoom relative overflow-hidden rounded-3xl md:col-span-2 md:row-span-2">
-            <img src="assets/img/flota-equipos.jpg" alt="Flota de vehículos de Hidráulicas AGT" class="h-full min-h-[280px] w-full object-cover" loading="lazy" />
-            <figcaption class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink-900/90 to-transparent p-6 text-white"><p class="text-xs uppercase tracking-widest text-accent-400">Capacidad operativa</p><p class="font-display text-lg font-bold">Flota y equipos propios</p></figcaption>
-          </figure>
-          <figure class="reveal img-zoom relative overflow-hidden rounded-3xl" style="--d:80ms">
-            <img src="assets/img/limpieza-vactor.jpg" alt="Limpieza de tubería con equipo vactor" class="aspect-[4/3] h-full w-full object-cover" loading="lazy" />
-            <figcaption class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink-900/90 to-transparent p-5 text-white"><p class="font-display font-bold">Limpieza con vactor</p></figcaption>
-          </figure>
-          <figure class="reveal img-zoom relative overflow-hidden rounded-3xl" style="--d:160ms">
-            <img src="assets/img/acueducto-pozo.jpg" alt="Intervención en pozo de acueducto" class="aspect-[4/3] h-full w-full object-cover" loading="lazy" />
-            <figcaption class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink-900/90 to-transparent p-5 text-white"><p class="font-display font-bold">Redes de acueducto</p></figcaption>
-          </figure>
-        </div>
+        <!-- IMÁGENES DE SERVICIOS (Unsplash) — PRODUCCIÓN: reemplazar por fotos propias cuando existan -->
+        <div class="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <article class="service-card reveal group relative overflow-hidden rounded-3xl bg-white shadow-soft" style="--d:0ms">
+            <div class="spotlight pointer-events-none absolute inset-0 z-10"></div>
+            <div class="relative h-48 overflow-hidden"><img class="card-img h-full w-full object-cover" src="https://images.unsplash.com/photo-1686772989910-da2e602b9854?auto=format&fit=crop&w=800&h=520&q=75" alt="Excavación con maquinaria pesada" loading="lazy" /><div class="absolute inset-0 bg-gradient-to-t from-navy-950/50 to-transparent"></div></div>
+            <div class="relative p-7 pt-0">
+              <div class="card-icon -mt-7 flex h-14 w-14 items-center justify-center rounded-2xl bg-navy-900 text-white shadow-lift ring-4 ring-white">
+                <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 10h18M3 14h18M7 10V6m10 4V6M7 18v-4m10 4v-4"/></svg>
+              </div>
+              <h3 class="mt-5 font-display text-lg font-bold text-navy-900">Excavación e instalación de tubería a gran profundidad</h3>
+              <p class="mt-3 text-sm leading-relaxed text-navy-500">Tuberías y cajas de inspección para alcantarillado pluvial y aguas negras. Domiciliarias en todos los tamaños.</p>
+              <ul class="card-more mt-4 space-y-1.5 border-t border-navy-100 pt-4 text-sm text-navy-500">
+                <li class="flex gap-2"><span class="text-aqua-500">●</span>Conexión a sistemas de alcantarillado</li>
+                <li class="flex gap-2"><span class="text-aqua-500">●</span>Intervención con misil sobre asfalto, concreto o zona verde</li>
+                <li class="flex gap-2"><span class="text-aqua-500">●</span>Experiencia directa en zonas 1, 2, 3 y 5</li>
+              </ul>
+            </div>
+          </article>
 
-        <!-- CLIENTES: reemplazar los nombres por sus logos (SVG/PNG en escala de grises) cuando se cuente con autorización -->
-        <div class="mt-24">
-          <p class="reveal text-center text-sm font-semibold uppercase tracking-[.14em] text-ink-500">Empresas que han confiado en nosotros</p>
-          <ul class="mt-8 flex flex-wrap justify-center gap-3" id="clients">
-            <li class="reveal rounded-full border border-ink-300/40 bg-white px-5 py-2.5 text-sm font-semibold text-ink-700">Adistudio S.A.S.</li>
-            <li class="reveal rounded-full border border-ink-300/40 bg-white px-5 py-2.5 text-sm font-semibold text-ink-700">Condufluidos S.A.S.</li>
-            <li class="reveal rounded-full border border-ink-300/40 bg-white px-5 py-2.5 text-sm font-semibold text-ink-700">Consulcon S.A.S. ESP</li>
-            <li class="reveal rounded-full border border-ink-300/40 bg-white px-5 py-2.5 text-sm font-semibold text-ink-700">Constructora MMVR S.A.S.</li>
-            <li class="reveal rounded-full border border-ink-300/40 bg-white px-5 py-2.5 text-sm font-semibold text-ink-700">Dascia S.A.S.</li>
-            <li class="reveal rounded-full border border-ink-300/40 bg-white px-5 py-2.5 text-sm font-semibold text-ink-700">Ferrealgar S.A.S.</li>
-            <li class="reveal rounded-full border border-ink-300/40 bg-white px-5 py-2.5 text-sm font-semibold text-ink-700">Fontaneros H.B. S.A.S.</li>
-            <li class="reveal rounded-full border border-ink-300/40 bg-white px-5 py-2.5 text-sm font-semibold text-ink-700">Ingetop S.A.S.</li>
-            <li class="reveal rounded-full border border-ink-300/40 bg-white px-5 py-2.5 text-sm font-semibold text-ink-700">Iniciativa Inmobiliaria S.A.S.</li>
-            <li class="reveal rounded-full border border-ink-300/40 bg-white px-5 py-2.5 text-sm font-semibold text-ink-700">Inmobiliaria GADU S.A.S.</li>
-            <li class="reveal rounded-full border border-ink-300/40 bg-white px-5 py-2.5 text-sm font-semibold text-ink-700">Instalaciones Hidráulicas W.C.</li>
-            <li class="reveal rounded-full border border-ink-300/40 bg-white px-5 py-2.5 text-sm font-semibold text-ink-700">Inversiones Inmobiliarias Zenit S.A.S.</li>
-            <li class="reveal rounded-full border border-ink-300/40 bg-white px-5 py-2.5 text-sm font-semibold text-ink-700">MYM Proyectos Inmobiliarios</li>
-            <li class="reveal rounded-full border border-ink-300/40 bg-white px-5 py-2.5 text-sm font-semibold text-ink-700">Vival Arquitectos Ltda.</li>
-          </ul>
-          <!-- TESTIMONIOS: no hay testimonios en la documentación. Cuando los tengan, añadir aquí bloques <blockquote> con nombre y cargo autorizados. -->
+          <article class="service-card reveal group relative overflow-hidden rounded-3xl bg-white shadow-soft" style="--d:80ms">
+            <div class="spotlight pointer-events-none absolute inset-0 z-10"></div>
+            <div class="relative h-48 overflow-hidden"><img class="card-img h-full w-full object-cover" src="https://images.unsplash.com/photo-1693907986952-3cd372e4c9d8?auto=format&fit=crop&w=800&h=520&q=75" alt="Tubería y válvulas de acueducto" loading="lazy" /><div class="absolute inset-0 bg-gradient-to-t from-navy-950/50 to-transparent"></div></div>
+            <div class="relative p-7 pt-0">
+              <div class="card-icon -mt-7 flex h-14 w-14 items-center justify-center rounded-2xl bg-navy-900 text-white shadow-lift ring-4 ring-white">
+                <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11Z"/></svg>
+              </div>
+              <h3 class="mt-5 font-display text-lg font-bold text-navy-900">Operación de acueducto y alcantarillado</h3>
+              <p class="mt-3 text-sm leading-relaxed text-navy-500">Operadores en Cundinamarca: captación, conducción, tratamiento y distribución de agua potable, y mantenimiento del alcantarillado.</p>
+              <ul class="card-more mt-4 space-y-1.5 border-t border-navy-100 pt-4 text-sm text-navy-500">
+                <li class="flex gap-2"><span class="text-aqua-500">●</span>Lectura, facturación, cortes y reconexiones</li>
+                <li class="flex gap-2"><span class="text-aqua-500">●</span>Nuevas acometidas y atención de PQR</li>
+                <li class="flex gap-2"><span class="text-aqua-500">●</span>Atención al usuario y actividades conexas</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="service-card reveal group relative overflow-hidden rounded-3xl bg-white shadow-soft" style="--d:160ms">
+            <div class="spotlight pointer-events-none absolute inset-0 z-10"></div>
+            <div class="relative h-48 overflow-hidden"><img class="card-img h-full w-full object-cover" src="https://images.unsplash.com/photo-1526898943670-92bfa9f94c12?auto=format&fit=crop&w=800&h=520&q=75" alt="Agua saliendo de una tubería" loading="lazy" /><div class="absolute inset-0 bg-gradient-to-t from-navy-950/50 to-transparent"></div></div>
+            <div class="relative p-7 pt-0">
+              <div class="card-icon -mt-7 flex h-14 w-14 items-center justify-center rounded-2xl bg-navy-900 text-white shadow-lift ring-4 ring-white">
+                <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 12h10a4 4 0 0 1 4 4v4M4 8h10a8 8 0 0 1 8 8v4M4 8v8"/></svg>
+              </div>
+              <h3 class="mt-5 font-display text-lg font-bold text-navy-900">Limpieza de tuberías con vactor</h3>
+              <p class="mt-3 text-sm leading-relaxed text-navy-500">Succión y limpieza a presión para mantener las redes libres de obstrucciones y operando a plena capacidad.</p>
+              <ul class="card-more mt-4 space-y-1.5 border-t border-navy-100 pt-4 text-sm text-navy-500">
+                <li class="flex gap-2"><span class="text-aqua-500">●</span>Redes principales de acueducto y aguas negras</li>
+                <li class="flex gap-2"><span class="text-aqua-500">●</span>Cajas de inspección y pozos</li>
+                <li class="flex gap-2"><span class="text-aqua-500">●</span>Domiciliarias existentes</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="service-card reveal group relative overflow-hidden rounded-3xl bg-white shadow-soft" style="--d:0ms">
+            <div class="spotlight pointer-events-none absolute inset-0 z-10"></div>
+            <div class="relative h-48 overflow-hidden"><img class="card-img h-full w-full object-cover" src="https://images.unsplash.com/photo-1790767900100-249b668f9a4b?auto=format&fit=crop&w=800&h=520&q=75" alt="Intervención de andén con zanja y maquinaria" loading="lazy" /><div class="absolute inset-0 bg-gradient-to-t from-navy-950/50 to-transparent"></div></div>
+            <div class="relative p-7 pt-0">
+              <div class="card-icon -mt-7 flex h-14 w-14 items-center justify-center rounded-2xl bg-navy-900 text-white shadow-lift ring-4 ring-white">
+                <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 20h18M5 20V9l7-5 7 5v11M9 20v-6h6v6"/></svg>
+              </div>
+              <h3 class="mt-5 font-display text-lg font-bold text-navy-900">Recuperación de espacio público</h3>
+              <p class="mt-3 text-sm leading-relaxed text-navy-500">Reparación de andenes en tableta, granito, concreto, mármol y zonas verdes, con calidad y eficiencia bajo norma IDU.</p>
+              <ul class="card-more mt-4 space-y-1.5 border-t border-navy-100 pt-4 text-sm text-navy-500">
+                <li class="flex gap-2"><span class="text-aqua-500">●</span>Obra vertical y reparaciones locativas</li>
+                <li class="flex gap-2"><span class="text-aqua-500">●</span>Acabados en cualquier tipo de material</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="service-card reveal group relative overflow-hidden rounded-3xl bg-white shadow-soft" style="--d:80ms">
+            <div class="spotlight pointer-events-none absolute inset-0 z-10"></div>
+            <div class="relative h-48 overflow-hidden"><img class="card-img h-full w-full object-cover" src="https://images.unsplash.com/photo-1706712637075-f47fb47548f2?auto=format&fit=crop&w=800&h=520&q=75" alt="Vía con asfalto nuevo" loading="lazy" /><div class="absolute inset-0 bg-gradient-to-t from-navy-950/50 to-transparent"></div></div>
+            <div class="relative p-7 pt-0">
+              <div class="card-icon -mt-7 flex h-14 w-14 items-center justify-center rounded-2xl bg-navy-900 text-white shadow-lift ring-4 ring-white">
+                <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 20 9 4m6 0 5 16M12 6v2m0 4v2m0 4v2"/></svg>
+              </div>
+              <h3 class="mt-5 font-display text-lg font-bold text-navy-900">Aplicación de asfaltos</h3>
+              <p class="mt-3 text-sm leading-relaxed text-navy-500">Pavimentación de vías según especificación bajo norma IDU, en los tamaños y bases que requiera cada proyecto.</p>
+              <ul class="card-more mt-4 space-y-1.5 border-t border-navy-100 pt-4 text-sm text-navy-500">
+                <li class="flex gap-2"><span class="text-aqua-500">●</span>Cortes, rellenos y compactación</li>
+                <li class="flex gap-2"><span class="text-aqua-500">●</span>Maquinaria especializada y materiales de calidad</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="service-card reveal group relative overflow-hidden rounded-3xl bg-white shadow-soft" style="--d:160ms">
+            <div class="spotlight pointer-events-none absolute inset-0 z-10"></div>
+            <div class="relative h-48 overflow-hidden"><img class="card-img h-full w-full object-cover" src="https://images.unsplash.com/photo-1686772553688-92fa864cae8a?auto=format&fit=crop&w=800&h=520&q=75" alt="Excavadora moviendo tierra" loading="lazy" /><div class="absolute inset-0 bg-gradient-to-t from-navy-950/50 to-transparent"></div></div>
+            <div class="relative p-7 pt-0">
+              <div class="card-icon -mt-7 flex h-14 w-14 items-center justify-center rounded-2xl bg-navy-900 text-white shadow-lift ring-4 ring-white">
+                <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 17h2l2-6h8l2 6h4M7 17a2 2 0 1 0 4 0m4 0a2 2 0 1 0 4 0M9 11V7h4l2 4"/></svg>
+              </div>
+              <h3 class="mt-5 font-display text-lg font-bold text-navy-900">Movimiento de material</h3>
+              <p class="mt-3 text-sm leading-relaxed text-navy-500">Gestión completa de tierras y escombros, con disposición ecológica en sitios autorizados.</p>
+              <ul class="card-more mt-4 space-y-1.5 border-t border-navy-100 pt-4 text-sm text-navy-500">
+                <li class="flex gap-2"><span class="text-aqua-500">●</span>Retiro de tierras, escombros y excavaciones</li>
+                <li class="flex gap-2"><span class="text-aqua-500">●</span>Rellenos en bases granulares y compactación</li>
+                <li class="flex gap-2"><span class="text-aqua-500">●</span>Cortes en todo tipo de material</li>
+              </ul>
+            </div>
+          </article>
         </div>
       </div>
     </section>
 
     <!-- =========================================================
-         CTA intermedio
+         CÓMO OPERAMOS / POR QUÉ ELEGIRNOS
+         (Tubería que se llena de agua al avanzar el scroll)
+    ========================================================== -->
+    <section id="operacion" class="relative overflow-hidden bg-navy-900 py-24 text-white lg:py-32">
+      <div class="pointer-events-none absolute -right-40 -top-40 h-[520px] w-[520px] rounded-full bg-aqua-600/25 blur-3xl" data-parallax="0.12" aria-hidden="true"></div>
+      <div class="pointer-events-none absolute -bottom-40 -left-40 h-[420px] w-[420px] rounded-full bg-aqua-400/10 blur-3xl" aria-hidden="true"></div>
+
+      <div class="relative mx-auto grid max-w-7xl gap-16 px-5 lg:grid-cols-[1fr_1.2fr] lg:px-8">
+        <div class="lg:sticky lg:top-32 lg:self-start">
+          <p class="reveal text-sm font-semibold uppercase tracking-[.16em] text-aqua-300">Por qué elegirnos</p>
+          <h2 class="reveal mt-3 font-display text-3xl font-extrabold tracking-tight sm:text-[2.6rem] sm:leading-tight" style="--d:60ms">Respuesta rápida, ejecución ordenada y cero improvisación</h2>
+          <p class="reveal mt-5 leading-relaxed text-white/70" style="--d:120ms">Nuestra logística está diseñada para cumplir los tiempos de la Empresa de Acueducto y Alcantarillado de Bogotá (EAAB), con cobertura integrada en todas las zonas de la ciudad y optimización de recursos.</p>
+          <a href="#contacto" class="reveal btn mt-8 inline-flex items-center gap-2 rounded-full bg-white px-6 py-3.5 font-semibold text-navy-900 hover:bg-aqua-50" style="--d:180ms">
+            Hablar con un experto
+            <svg class="arrow h-4 w-4" fill="none" stroke="currentColor" stroke-width="2.4" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-6-6 6 6-6 6"/></svg>
+          </a>
+        </div>
+
+        <div id="pipe" class="relative pl-12">
+          <!-- Tubería -->
+          <div class="absolute bottom-3 left-[15px] top-3 w-[6px] overflow-hidden rounded-full bg-white/10" aria-hidden="true">
+            <div id="pipe-fill" class="h-full w-full rounded-full bg-gradient-to-b from-aqua-300 to-aqua-500"></div>
+          </div>
+          <ol class="space-y-12">
+            <li class="pipe-step relative">
+              <span class="pipe-node absolute -left-12 top-1 flex h-9 w-9 items-center justify-center rounded-full bg-navy-700 font-display text-sm font-bold">1</span>
+              <h3 class="font-display text-xl font-bold">Permisos y planes al día</h3>
+              <p class="mt-2 text-white/65">Licencias de excavación y planes de manejo de tráfico gestionados antes de intervenir.</p>
+            </li>
+            <li class="pipe-step relative">
+              <span class="pipe-node absolute -left-12 top-1 flex h-9 w-9 items-center justify-center rounded-full bg-navy-700 font-display text-sm font-bold">2</span>
+              <h3 class="font-display text-xl font-bold">Planes de contingencia</h3>
+              <p class="mt-2 text-white/65">Cada frente de obra cuenta con respuesta prevista ante imprevistos.</p>
+            </li>
+            <li class="pipe-step relative">
+              <span class="pipe-node absolute -left-12 top-1 flex h-9 w-9 items-center justify-center rounded-full bg-navy-700 font-display text-sm font-bold">3</span>
+              <h3 class="font-display text-xl font-bold">Ejecución en tiempos EAAB de 36 horas</h3>
+              <p class="mt-2 text-white/65">Logística zonificada que integra todas las zonas de Bogotá con optimización de recursos.</p>
+            </li>
+            <li class="pipe-step relative">
+              <span class="pipe-node absolute -left-12 top-1 flex h-9 w-9 items-center justify-center rounded-full bg-navy-700 font-display text-sm font-bold">4</span>
+              <h3 class="font-display text-xl font-bold">Comunicación permanente 24 horas</h3>
+              <p class="mt-2 text-white/65">Radiocomunicación, correo electrónico y zonificación las 24 horas.</p>
+            </li>
+            <li class="pipe-step relative">
+              <span class="pipe-node absolute -left-12 top-1 flex h-9 w-9 items-center justify-center rounded-full bg-navy-700 font-display text-sm font-bold">5</span>
+              <h3 class="font-display text-xl font-bold">Equipo propio y capacitado</h3>
+              <p class="mt-2 text-white/65">Recurso humano y técnico idóneo, con maquinaria y equipos propios.</p>
+            </li>
+            <li class="pipe-step relative">
+              <span class="pipe-node absolute -left-12 top-1 flex h-9 w-9 items-center justify-center rounded-full bg-navy-700 font-display text-sm font-bold">6</span>
+              <h3 class="font-display text-xl font-bold">Calidad bajo norma y respeto ambiental</h3>
+              <p class="mt-2 text-white/65">Trabajos bajo especificaciones IDU y disposición ecológica de materiales en sitios autorizados.</p>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         CLIENTES (marquesina doble)
+    ========================================================== -->
+    <section id="clientes" class="py-24 lg:py-28">
+      <div class="mx-auto max-w-3xl px-5 text-center">
+        <p class="reveal text-sm font-semibold uppercase tracking-[.16em] text-aqua-600">Clientes</p>
+        <h2 class="reveal mt-3 font-display text-3xl font-extrabold tracking-tight text-navy-900 sm:text-[2.6rem] sm:leading-tight" style="--d:60ms">Empresas que confían en nuestro trabajo</h2>
+      </div>
+      <!-- CLIENTES: cuando haya autorización, reemplazar los nombres por logos (SVG/PNG monocromo) -->
+      <div class="reveal mt-14 space-y-4" style="--d:120ms">
+        <div class="marquee overflow-hidden">
+          <ul class="marquee-track flex w-max gap-4" data-marquee>
+            <li class="client-chip whitespace-nowrap rounded-2xl border border-navy-100 bg-white px-7 py-4 font-display text-base font-bold text-navy-800 shadow-soft">Adistudio S.A.S.</li>
+            <li class="client-chip whitespace-nowrap rounded-2xl border border-navy-100 bg-white px-7 py-4 font-display text-base font-bold text-navy-800 shadow-soft">Condufluidos S.A.S.</li>
+            <li class="client-chip whitespace-nowrap rounded-2xl border border-navy-100 bg-white px-7 py-4 font-display text-base font-bold text-navy-800 shadow-soft">Consulcon S.A.S. ESP</li>
+            <li class="client-chip whitespace-nowrap rounded-2xl border border-navy-100 bg-white px-7 py-4 font-display text-base font-bold text-navy-800 shadow-soft">Constructora MMVR S.A.S.</li>
+            <li class="client-chip whitespace-nowrap rounded-2xl border border-navy-100 bg-white px-7 py-4 font-display text-base font-bold text-navy-800 shadow-soft">Dascia S.A.S.</li>
+            <li class="client-chip whitespace-nowrap rounded-2xl border border-navy-100 bg-white px-7 py-4 font-display text-base font-bold text-navy-800 shadow-soft">Ferrealgar S.A.S.</li>
+            <li class="client-chip whitespace-nowrap rounded-2xl border border-navy-100 bg-white px-7 py-4 font-display text-base font-bold text-navy-800 shadow-soft">Fontaneros H.B. S.A.S.</li>
+          </ul>
+        </div>
+        <div class="marquee overflow-hidden">
+          <ul class="marquee-track reverse flex w-max gap-4" data-marquee>
+            <li class="client-chip whitespace-nowrap rounded-2xl border border-navy-100 bg-white px-7 py-4 font-display text-base font-bold text-navy-800 shadow-soft">Ingetop S.A.S.</li>
+            <li class="client-chip whitespace-nowrap rounded-2xl border border-navy-100 bg-white px-7 py-4 font-display text-base font-bold text-navy-800 shadow-soft">Iniciativa Inmobiliaria S.A.S.</li>
+            <li class="client-chip whitespace-nowrap rounded-2xl border border-navy-100 bg-white px-7 py-4 font-display text-base font-bold text-navy-800 shadow-soft">Inmobiliaria GADU S.A.S.</li>
+            <li class="client-chip whitespace-nowrap rounded-2xl border border-navy-100 bg-white px-7 py-4 font-display text-base font-bold text-navy-800 shadow-soft">Instalaciones Hidráulicas W.C.</li>
+            <li class="client-chip whitespace-nowrap rounded-2xl border border-navy-100 bg-white px-7 py-4 font-display text-base font-bold text-navy-800 shadow-soft">Inversiones Inmobiliarias Zenit S.A.S.</li>
+            <li class="client-chip whitespace-nowrap rounded-2xl border border-navy-100 bg-white px-7 py-4 font-display text-base font-bold text-navy-800 shadow-soft">MYM Proyectos Inmobiliarios</li>
+            <li class="client-chip whitespace-nowrap rounded-2xl border border-navy-100 bg-white px-7 py-4 font-display text-base font-bold text-navy-800 shadow-soft">Vival Arquitectos Ltda.</li>
+          </ul>
+        </div>
+      </div>
+      <!-- TESTIMONIOS: no hay en la documentación. Añadir solo testimonios reales y autorizados. -->
+    </section>
+
+    <!-- =========================================================
+         CTA con imagen de agua
     ========================================================== -->
     <section class="px-5 lg:px-8">
-      <div class="reveal mx-auto flex max-w-7xl flex-col items-start justify-between gap-6 rounded-3xl bg-gradient-to-br from-brand-600 to-brand-800 p-10 text-white md:flex-row md:items-center lg:p-14">
-        <div>
-          <h2 class="font-display text-2xl font-extrabold sm:text-3xl">¿Tiene una obra hidráulica o civil en camino?</h2>
-          <p class="mt-2 text-white/75">Cuéntenos el alcance y le preparamos una propuesta a la medida.</p>
+      <div class="reveal reveal-scale relative mx-auto max-w-7xl overflow-hidden rounded-[2rem] bg-navy-900">
+        <div class="absolute inset-0" data-parallax="0.1">
+          <img src="https://images.unsplash.com/photo-1735754334934-ebf19271f2b4?auto=format&fit=crop&w=1800&q=75" alt="" class="h-[130%] w-full object-cover opacity-60" loading="lazy" />
         </div>
-        <a href="#contacto" class="btn-press flex-none rounded-full bg-accent-500 px-7 py-3.5 font-semibold text-white hover:bg-accent-600">Solicitar cotización</a>
+        <div class="absolute inset-0 bg-gradient-to-r from-navy-950/95 via-navy-900/80 to-navy-900/20"></div>
+        <div class="relative flex flex-col items-start justify-between gap-8 p-10 md:flex-row md:items-center lg:p-16">
+          <div class="max-w-xl">
+            <h2 class="font-display text-3xl font-extrabold text-white sm:text-4xl">¿Tiene una obra hidráulica o civil en camino?</h2>
+            <p class="mt-3 text-lg text-white/75">Cuéntenos el alcance y le preparamos una propuesta a la medida.</p>
+          </div>
+          <a href="#contacto" class="btn btn-shine flex-none inline-flex items-center gap-2 rounded-full bg-aqua-500 px-8 py-4 font-semibold text-white shadow-lg shadow-aqua-500/30 hover:bg-aqua-600" data-magnetic>
+            Solicitar cotización
+            <svg class="arrow h-4 w-4" fill="none" stroke="currentColor" stroke-width="2.4" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-6-6 6 6-6 6"/></svg>
+          </a>
+        </div>
       </div>
     </section>
 
@@ -387,75 +466,78 @@
     <section id="contacto" class="py-24 lg:py-32">
       <div class="mx-auto grid max-w-7xl gap-14 px-5 lg:grid-cols-[1fr_1.15fr] lg:px-8">
         <div>
-          <p class="reveal text-sm font-semibold uppercase tracking-[.14em] text-brand-600">Contacto</p>
-          <h2 class="reveal mt-3 font-display text-3xl font-extrabold tracking-tight text-ink-900 sm:text-4xl" style="--d:60ms">Hablemos de su proyecto</h2>
-          <p class="reveal mt-4 text-ink-500" style="--d:120ms">Respondemos su solicitud a la mayor brevedad. Si es urgente, escríbanos por WhatsApp.</p>
+          <p class="reveal text-sm font-semibold uppercase tracking-[.16em] text-aqua-600">Contacto</p>
+          <h2 class="reveal mt-3 font-display text-3xl font-extrabold tracking-tight text-navy-900 sm:text-[2.6rem] sm:leading-tight" style="--d:60ms">Hablemos de su proyecto</h2>
+          <p class="reveal mt-4 text-navy-500" style="--d:120ms">Respondemos su solicitud a la mayor brevedad. Si es urgente, escríbanos por WhatsApp.</p>
 
           <ul class="mt-10 space-y-5">
-            <li class="reveal flex gap-4" style="--d:160ms">
-              <span class="flex h-11 w-11 flex-none items-center justify-center rounded-xl bg-brand-50 text-brand-600"><svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11Zm0-8.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z"/></svg></span>
-              <div><p class="text-sm text-ink-500">Dirección</p><p class="font-semibold text-ink-900" data-config="address">Autopista Norte # 131 - 45, Piso 3 · Bogotá D.C.</p></div>
+            <li class="reveal reveal-left flex gap-4" style="--d:160ms">
+              <span class="flex h-12 w-12 flex-none items-center justify-center rounded-2xl bg-aqua-50 text-aqua-600"><svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11Zm0-8.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z"/></svg></span>
+              <div><p class="text-sm text-navy-500">Dirección</p><p class="font-semibold text-navy-900">Autopista Norte # 131 - 45, Piso 3 · Bogotá D.C.</p></div>
             </li>
-            <li class="reveal flex gap-4" style="--d:200ms">
-              <span class="flex h-11 w-11 flex-none items-center justify-center rounded-xl bg-brand-50 text-brand-600"><svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2Z"/></svg></span>
-              <div><p class="text-sm text-ink-500">Teléfonos</p>
-                <p class="font-semibold text-ink-900"><a href="tel:+573103331124" class="hover:text-brand-600">+57 310 333 1124</a> · <a href="tel:+576016484766" class="hover:text-brand-600">(601) 648 4766</a></p></div>
+            <li class="reveal reveal-left flex gap-4" style="--d:220ms">
+              <span class="flex h-12 w-12 flex-none items-center justify-center rounded-2xl bg-aqua-50 text-aqua-600"><svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2Z"/></svg></span>
+              <div><p class="text-sm text-navy-500">Celular</p><a href="tel:+573103331124" class="font-semibold text-navy-900 hover:text-aqua-600">310 333 11 24</a></div>
             </li>
-            <li class="reveal flex gap-4" style="--d:240ms">
-              <span class="flex h-11 w-11 flex-none items-center justify-center rounded-xl bg-brand-50 text-brand-600"><svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16v12H4zM4 7l8 6 8-6"/></svg></span>
-              <div><p class="text-sm text-ink-500">Correo</p><a href="mailto:alexandergaona@hotmail.com" class="font-semibold text-ink-900 hover:text-brand-600">alexandergaona@hotmail.com</a></div>
+            <li class="reveal reveal-left flex gap-4" style="--d:280ms">
+              <span class="flex h-12 w-12 flex-none items-center justify-center rounded-2xl bg-aqua-50 text-aqua-600"><svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16v12H4zM4 7l8 6 8-6"/></svg></span>
+              <div><p class="text-sm text-navy-500">Correo</p><a href="mailto:hidraulicasagtsas@gmail.com" class="break-all font-semibold text-navy-900 hover:text-aqua-600">hidraulicasagtsas@gmail.com</a></div>
             </li>
           </ul>
 
-          <a id="wa-direct" href="https://wa.me/573103331124?text=Hola%20Hidr%C3%A1ulicas%20AGT%2C%20quiero%20cotizar%20un%20proyecto." target="_blank" rel="noopener" class="reveal btn-press mt-10 inline-flex items-center gap-3 rounded-full bg-[#25D366] px-6 py-3.5 font-semibold text-white hover:brightness-95" style="--d:280ms">
-            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 3.5A11.8 11.8 0 0 0 1.9 17.6L.5 23.5l6-1.6A11.8 11.8 0 0 0 20.5 3.5ZM12 21.3a9.6 9.6 0 0 1-4.9-1.3l-.4-.2-3.6.9 1-3.5-.2-.4A9.6 9.6 0 1 1 12 21.3Zm5.3-7.2c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.1l-.9 1.1c-.2.2-.3.2-.6.1a7.9 7.9 0 0 1-3.9-3.4c-.3-.5.3-.5.8-1.6.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6a1.1 1.1 0 0 0-.8.4 3.4 3.4 0 0 0-1 2.5 5.9 5.9 0 0 0 1.2 3.1 13.5 13.5 0 0 0 5.2 4.6c1.9.8 2.7.9 3.6.7a3.1 3.1 0 0 0 2-1.4 2.5 2.5 0 0 0 .2-1.4c-.1-.1-.3-.2-.6-.3Z"/></svg>
+          <a href="https://wa.me/573103331124?text=Hola%20Hidr%C3%A1ulicas%20AGT%2C%20quiero%20cotizar%20un%20proyecto." target="_blank" rel="noopener" class="reveal btn mt-10 inline-flex items-center gap-3 rounded-full bg-[#25D366] px-6 py-3.5 font-semibold text-white hover:brightness-95" style="--d:340ms">
+            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.5 3.5A11.8 11.8 0 0 0 1.9 17.6L.5 23.5l6-1.6A11.8 11.8 0 0 0 20.5 3.5ZM12 21.3a9.6 9.6 0 0 1-4.9-1.3l-.4-.2-3.6.9 1-3.5-.2-.4A9.6 9.6 0 1 1 12 21.3Zm5.3-7.2c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.1l-.9 1.1c-.2.2-.3.2-.6.1a7.9 7.9 0 0 1-3.9-3.4c-.3-.5.3-.5.8-1.6.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6a1.1 1.1 0 0 0-.8.4 3.4 3.4 0 0 0-1 2.5 5.9 5.9 0 0 0 1.2 3.1 13.5 13.5 0 0 0 5.2 4.6c1.9.8 2.7.9 3.6.7a3.1 3.1 0 0 0 2-1.4 2.5 2.5 0 0 0 .2-1.4c-.1-.1-.3-.2-.6-.3Z"/></svg>
             Escribir por WhatsApp
           </a>
 
-          <!-- MAPA: el src usa la búsqueda pública de Google Maps; reemplazar por el embed oficial de su ficha de Google Business -->
-          <div class="reveal mt-10 overflow-hidden rounded-2xl border border-ink-300/30" style="--d:320ms">
-            <iframe title="Ubicación Hidráulicas AGT" class="h-56 w-full" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          <!-- MAPA — PRODUCCIÓN: reemplazar por el embed de su ficha de Google Business -->
+          <div class="reveal mt-10 overflow-hidden rounded-3xl border border-navy-100 shadow-soft" style="--d:380ms">
+            <iframe title="Ubicación Hidráulicas AGT" class="h-60 w-full" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
               src="https://maps.google.com/maps?q=Autopista%20Norte%20131-45%2C%20Bogot%C3%A1&z=15&output=embed"></iframe>
           </div>
         </div>
 
         <!-- FORMULARIO -->
-        <div class="reveal rounded-3xl border border-ink-300/25 bg-white p-7 shadow-soft sm:p-10" style="--d:120ms">
-          <h3 class="font-display text-xl font-bold text-ink-900">Solicite su cotización</h3>
-          <p class="mt-1 text-sm text-ink-500">Todos los campos son obligatorios.</p>
+        <div class="reveal reveal-right relative rounded-[2rem] border border-navy-100 bg-white p-7 shadow-lift sm:p-10" style="--d:120ms" id="form-card">
+          <h3 class="font-display text-2xl font-bold text-navy-900">Solicite su cotización</h3>
+          <p class="mt-1 text-sm text-navy-500">Todos los campos son obligatorios.</p>
           <!-- PRODUCCIÓN: definir FORM_ENDPOINT en assets/js/main.js (p. ej. Formspree). Sin endpoint, el formulario envía los datos por WhatsApp. -->
           <form id="contact-form" class="mt-8 grid gap-5" novalidate>
             <div>
-              <label for="nombre" class="text-sm font-medium text-ink-800">Nombre completo</label>
-              <input id="nombre" name="nombre" type="text" autocomplete="name" required class="mt-2 w-full rounded-xl border border-ink-300/50 bg-slate-50 px-4 py-3 text-ink-900 outline-none transition focus:border-brand-500 focus:bg-white focus:ring-4 focus:ring-brand-500/15" />
+              <label for="nombre" class="text-sm font-medium text-navy-800">Nombre completo</label>
+              <input id="nombre" name="nombre" type="text" autocomplete="name" required class="mt-2 w-full rounded-xl border border-navy-100 bg-navy-50 px-4 py-3 text-navy-900 outline-none transition-[border-color,box-shadow,background-color] duration-200 focus:border-aqua-500 focus:bg-white focus:ring-4 focus:ring-aqua-500/15" />
               <p class="field-error mt-1.5 hidden text-xs text-red-600">Ingrese su nombre.</p>
             </div>
             <div class="grid gap-5 sm:grid-cols-2">
               <div>
-                <label for="email" class="text-sm font-medium text-ink-800">Correo electrónico</label>
-                <input id="email" name="email" type="email" autocomplete="email" required class="mt-2 w-full rounded-xl border border-ink-300/50 bg-slate-50 px-4 py-3 text-ink-900 outline-none transition focus:border-brand-500 focus:bg-white focus:ring-4 focus:ring-brand-500/15" />
+                <label for="email" class="text-sm font-medium text-navy-800">Correo electrónico</label>
+                <input id="email" name="email" type="email" autocomplete="email" required class="mt-2 w-full rounded-xl border border-navy-100 bg-navy-50 px-4 py-3 text-navy-900 outline-none transition-[border-color,box-shadow,background-color] duration-200 focus:border-aqua-500 focus:bg-white focus:ring-4 focus:ring-aqua-500/15" />
                 <p class="field-error mt-1.5 hidden text-xs text-red-600">Ingrese un correo válido.</p>
               </div>
               <div>
-                <label for="telefono" class="text-sm font-medium text-ink-800">Teléfono</label>
-                <input id="telefono" name="telefono" type="tel" autocomplete="tel" required pattern="[0-9+\s()-]{7,}" class="mt-2 w-full rounded-xl border border-ink-300/50 bg-slate-50 px-4 py-3 text-ink-900 outline-none transition focus:border-brand-500 focus:bg-white focus:ring-4 focus:ring-brand-500/15" />
+                <label for="telefono" class="text-sm font-medium text-navy-800">Teléfono</label>
+                <input id="telefono" name="telefono" type="tel" autocomplete="tel" required pattern="[0-9+\s()-]{7,}" class="mt-2 w-full rounded-xl border border-navy-100 bg-navy-50 px-4 py-3 text-navy-900 outline-none transition-[border-color,box-shadow,background-color] duration-200 focus:border-aqua-500 focus:bg-white focus:ring-4 focus:ring-aqua-500/15" />
                 <p class="field-error mt-1.5 hidden text-xs text-red-600">Ingrese un teléfono válido.</p>
               </div>
             </div>
             <div>
-              <label for="mensaje" class="text-sm font-medium text-ink-800">¿Qué necesita?</label>
-              <textarea id="mensaje" name="mensaje" rows="4" required placeholder="Ej.: instalación de domiciliaria de alcantarillado en Suba, 12 m de tubería…" class="mt-2 w-full resize-y rounded-xl border border-ink-300/50 bg-slate-50 px-4 py-3 text-ink-900 outline-none transition placeholder:text-ink-300 focus:border-brand-500 focus:bg-white focus:ring-4 focus:ring-brand-500/15"></textarea>
+              <label for="mensaje" class="text-sm font-medium text-navy-800">¿Qué necesita?</label>
+              <textarea id="mensaje" name="mensaje" rows="4" required placeholder="Ej.: instalación de domiciliaria de alcantarillado en Suba, 12 m de tubería…" class="mt-2 w-full resize-y rounded-xl border border-navy-100 bg-navy-50 px-4 py-3 text-navy-900 outline-none transition-[border-color,box-shadow,background-color] duration-200 placeholder:text-navy-300 focus:border-aqua-500 focus:bg-white focus:ring-4 focus:ring-aqua-500/15"></textarea>
               <p class="field-error mt-1.5 hidden text-xs text-red-600">Cuéntenos brevemente su necesidad.</p>
             </div>
-            <label class="flex items-start gap-3 text-sm text-ink-500">
-              <input type="checkbox" name="habeas" required class="mt-0.5 h-4 w-4 rounded border-ink-300 text-brand-600 focus:ring-brand-500" />
-              <span>Autorizo el tratamiento de mis datos personales según la <a href="#" class="font-medium text-brand-600 underline">Política de tratamiento de datos</a> (Ley 1581 de 2012).</span>
+            <label class="flex items-start gap-3 text-sm text-navy-500">
+              <input type="checkbox" name="habeas" required class="mt-0.5 h-4 w-4 rounded border-navy-300 accent-aqua-600" />
+              <span>Autorizo el tratamiento de mis datos personales según la <a href="#" class="font-medium text-aqua-600 underline">Política de tratamiento de datos</a> (Ley 1581 de 2012).</span>
             </label>
             <p class="field-error -mt-3 hidden text-xs text-red-600" data-for="habeas">Debe aceptar la política para continuar.</p>
-            <button type="submit" class="btn-press inline-flex items-center justify-center gap-2 rounded-full bg-brand-600 px-7 py-3.5 font-semibold text-white hover:bg-brand-700 disabled:opacity-60">
+            <button type="submit" class="btn btn-shine inline-flex items-center justify-center gap-2 rounded-full bg-navy-900 px-7 py-4 font-semibold text-white hover:bg-navy-800 disabled:opacity-60">
               <span class="btn-label">Enviar solicitud</span>
+              <svg class="arrow h-4 w-4" fill="none" stroke="currentColor" stroke-width="2.4" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-6-6 6 6-6 6"/></svg>
             </button>
-            <p id="form-status" class="hidden rounded-xl px-4 py-3 text-sm" role="status" aria-live="polite"></p>
+            <div id="form-status" class="hidden items-center gap-3 rounded-xl px-4 py-3 text-sm" role="status" aria-live="polite">
+              <svg class="h-5 w-5 flex-none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path class="check-path" stroke-linecap="round" stroke-linejoin="round" d="m5 13 4 4L19 7"/></svg>
+              <span class="status-text"></span>
+            </div>
           </form>
         </div>
       </div>
@@ -465,43 +547,38 @@
   <!-- =========================================================
        FOOTER
   ========================================================== -->
-  <footer class="bg-ink-900 text-white/70">
-    <div class="mx-auto grid max-w-7xl gap-10 px-5 py-16 sm:grid-cols-2 lg:grid-cols-4 lg:px-8">
-      <div class="lg:col-span-1">
-        <div class="flex items-center gap-3">
-          <img src="assets/img/logo-agt.png" alt="" class="h-10 w-auto rounded-md" />
-          <span class="font-display text-lg font-extrabold text-white">Hidráulicas AGT</span>
-        </div>
-        <p class="mt-4 text-sm leading-relaxed">Acueducto, alcantarillado y obra civil con calidad, puntualidad y respeto por el medio ambiente.</p>
+  <footer class="relative bg-navy-950 text-white/70">
+    <div class="mx-auto grid max-w-7xl gap-10 px-5 py-16 sm:grid-cols-2 lg:grid-cols-[1.3fr_1fr_1fr_1fr] lg:px-8">
+      <div>
+        <img src="assets/img/logo-agt-white.png" alt="Hidráulicas AGT S.A.S." class="h-16 w-auto" width="1226" height="549" loading="lazy" />
+        <p class="mt-5 max-w-xs text-sm leading-relaxed">Acueducto, alcantarillado y obra civil con calidad, puntualidad y respeto por el medio ambiente.</p>
         <p class="mt-3 text-xs text-white/40">NIT 900.967.188-0</p>
       </div>
       <div>
-        <h4 class="font-display text-sm font-bold uppercase tracking-widest text-white">Mapa del sitio</h4>
+        <h4 class="font-display text-xs font-bold uppercase tracking-[.18em] text-white">Mapa del sitio</h4>
         <ul class="mt-4 space-y-2 text-sm">
-          <li><a href="#nosotros" class="hover:text-accent-400">Nosotros</a></li>
-          <li><a href="#servicios" class="hover:text-accent-400">Servicios</a></li>
-          <li><a href="#diferencial" class="hover:text-accent-400">Por qué AGT</a></li>
-          <li><a href="#proyectos" class="hover:text-accent-400">Proyectos</a></li>
-          <li><a href="#contacto" class="hover:text-accent-400">Contacto</a></li>
+          <li><a href="#nosotros" class="transition-colors hover:text-aqua-300">Nosotros</a></li>
+          <li><a href="#servicios" class="transition-colors hover:text-aqua-300">Servicios</a></li>
+          <li><a href="#operacion" class="transition-colors hover:text-aqua-300">Cómo operamos</a></li>
+          <li><a href="#clientes" class="transition-colors hover:text-aqua-300">Clientes</a></li>
+          <li><a href="#contacto" class="transition-colors hover:text-aqua-300">Contacto</a></li>
         </ul>
       </div>
       <div>
-        <h4 class="font-display text-sm font-bold uppercase tracking-widest text-white">Servicios</h4>
+        <h4 class="font-display text-xs font-bold uppercase tracking-[.18em] text-white">Contacto</h4>
         <ul class="mt-4 space-y-2 text-sm">
-          <li>Instalación de tubería</li>
-          <li>Operación de acueducto</li>
-          <li>Limpieza con vactor</li>
-          <li>Espacio público y asfaltos</li>
-          <li>Movimiento de material</li>
+          <li><a href="tel:+573103331124" class="transition-colors hover:text-aqua-300">310 333 11 24</a></li>
+          <li><a href="mailto:hidraulicasagtsas@gmail.com" class="break-all transition-colors hover:text-aqua-300">hidraulicasagtsas@gmail.com</a></li>
+          <li>Bogotá D.C., Colombia</li>
         </ul>
       </div>
       <div>
-        <h4 class="font-display text-sm font-bold uppercase tracking-widest text-white">Síganos</h4>
+        <h4 class="font-display text-xs font-bold uppercase tracking-[.18em] text-white">Síganos</h4>
         <!-- REDES: reemplazar href="#" por las URLs reales; eliminar las que no usen -->
         <div class="mt-4 flex gap-3">
-          <a href="#" aria-label="Facebook" class="flex h-10 w-10 items-center justify-center rounded-full bg-white/5 hover:bg-white/15"><svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24"><path d="M14 8h3V4h-3a4 4 0 0 0-4 4v2H8v4h2v8h4v-8h3l1-4h-4V8Z"/></svg></a>
-          <a href="#" aria-label="Instagram" class="flex h-10 w-10 items-center justify-center rounded-full bg-white/5 hover:bg-white/15"><svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>
-          <a href="#" aria-label="LinkedIn" class="flex h-10 w-10 items-center justify-center rounded-full bg-white/5 hover:bg-white/15"><svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24"><path d="M4 9h4v12H4zM6 3a2 2 0 1 1 0 4 2 2 0 0 1 0-4Zm4 6h4v1.7A4.3 4.3 0 0 1 18 9c3 0 3.5 2 3.5 4.6V21h-4v-6.5c0-1.5 0-3.4-2-3.4s-2.4 1.6-2.4 3.3V21H10z"/></svg></a>
+          <a href="#" aria-label="Facebook" class="social flex h-10 w-10 items-center justify-center rounded-full bg-white/5"><svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24"><path d="M14 8h3V4h-3a4 4 0 0 0-4 4v2H8v4h2v8h4v-8h3l1-4h-4V8Z"/></svg></a>
+          <a href="#" aria-label="Instagram" class="social flex h-10 w-10 items-center justify-center rounded-full bg-white/5"><svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>
+          <a href="#" aria-label="LinkedIn" class="social flex h-10 w-10 items-center justify-center rounded-full bg-white/5"><svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24"><path d="M4 9h4v12H4zM6 3a2 2 0 1 1 0 4 2 2 0 0 1 0-4Zm4 6h4v1.7A4.3 4.3 0 0 1 18 9c3 0 3.5 2 3.5 4.6V21h-4v-6.5c0-1.5 0-3.4-2-3.4s-2.4 1.6-2.4 3.3V21H10z"/></svg></a>
         </div>
       </div>
     </div>
@@ -514,10 +591,10 @@
     </div>
   </footer>
 
-  <!-- Botón flotante de WhatsApp -->
+  <!-- WhatsApp flotante -->
   <a href="https://wa.me/573103331124?text=Hola%20Hidr%C3%A1ulicas%20AGT%2C%20quiero%20cotizar%20un%20proyecto." target="_blank" rel="noopener" aria-label="Escribir por WhatsApp"
-     class="wa-pulse btn-press fixed bottom-5 right-5 z-40 flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-lg">
-    <svg class="h-7 w-7" viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 3.5A11.8 11.8 0 0 0 1.9 17.6L.5 23.5l6-1.6A11.8 11.8 0 0 0 20.5 3.5ZM12 21.3a9.6 9.6 0 0 1-4.9-1.3l-.4-.2-3.6.9 1-3.5-.2-.4A9.6 9.6 0 1 1 12 21.3Zm5.3-7.2c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.1l-.9 1.1c-.2.2-.3.2-.6.1a7.9 7.9 0 0 1-3.9-3.4c-.3-.5.3-.5.8-1.6.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6a1.1 1.1 0 0 0-.8.4 3.4 3.4 0 0 0-1 2.5 5.9 5.9 0 0 0 1.2 3.1 13.5 13.5 0 0 0 5.2 4.6c1.9.8 2.7.9 3.6.7a3.1 3.1 0 0 0 2-1.4 2.5 2.5 0 0 0 .2-1.4c-.1-.1-.3-.2-.6-.3Z"/></svg>
+     class="wa-float btn fixed bottom-5 right-5 z-40 flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-lg">
+    <svg class="h-7 w-7" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.5 3.5A11.8 11.8 0 0 0 1.9 17.6L.5 23.5l6-1.6A11.8 11.8 0 0 0 20.5 3.5ZM12 21.3a9.6 9.6 0 0 1-4.9-1.3l-.4-.2-3.6.9 1-3.5-.2-.4A9.6 9.6 0 1 1 12 21.3Zm5.3-7.2c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.1l-.9 1.1c-.2.2-.3.2-.6.1a7.9 7.9 0 0 1-3.9-3.4c-.3-.5.3-.5.8-1.6.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6a1.1 1.1 0 0 0-.8.4 3.4 3.4 0 0 0-1 2.5 5.9 5.9 0 0 0 1.2 3.1 13.5 13.5 0 0 0 5.2 4.6c1.9.8 2.7.9 3.6.7a3.1 3.1 0 0 0 2-1.4 2.5 2.5 0 0 0 .2-1.4c-.1-.1-.3-.2-.6-.3Z"/></svg>
   </a>
 
   <script src="assets/js/main.js" defer></script>
