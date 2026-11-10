@@ -12,12 +12,8 @@
 
   $('#year').textContent = new Date().getFullYear();
 
-  // Si una foto externa no carga, se oculta y queda el degradado de marca de fondo
-  $$('img').forEach((img) => {
-    const hide = () => { img.style.visibility = 'hidden'; };
-    if (img.complete && img.naturalWidth === 0 && img.src) hide();
-    img.addEventListener('error', hide);
-  });
+  // Si una foto no carga, se oculta y queda el degradado de marca de fondo
+  $$('img').forEach((img) => img.addEventListener('error', () => { img.style.visibility = 'hidden'; }));
 
   // ---------- Titular del hero: dividir en palabras ----------
   let wordIndex = 0;
@@ -116,17 +112,22 @@
     requestAnimationFrame(step);
   };
 
+  // Los elementos con clip-path (.reveal-clip) se observan a través de su contenedor:
+  // un elemento recortado al 100% no tiene área visible y el observador nunca lo detectaría.
   const revealables = $$('.reveal, .reveal-clip');
+  const targetOf = (el) => (el.classList.contains('reveal-clip') ? el.parentElement : el);
   if ('IntersectionObserver' in window) {
     const io = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (!entry.isIntersecting) return;
-        entry.target.classList.add('is-visible');
-        $$('[data-count]', entry.target).forEach(animateCount);
+        revealables.filter((el) => targetOf(el) === entry.target).forEach((el) => {
+          el.classList.add('is-visible');
+          $$('[data-count]', el).forEach(animateCount);
+        });
         io.unobserve(entry.target);
       });
-    }, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
-    revealables.forEach((el) => io.observe(el));
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    new Set(revealables.map(targetOf)).forEach((el) => io.observe(el));
 
     // Enlace activo en la navegación
     const links = $$('#site-header ul .nav-link');
