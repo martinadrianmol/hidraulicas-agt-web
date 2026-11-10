@@ -87,17 +87,31 @@
       <div class="absolute inset-0 -z-10 bg-gradient-to-r from-navy-950 via-navy-950/85 to-navy-900/40"></div>
       <div class="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top_right,rgba(43,125,233,.28),transparent_55%)]"></div>
 
-      <!-- Gota de agua animada (elemento de la marca) -->
-      <svg class="pointer-events-none absolute right-0 top-[16%] hidden h-[300px] w-[300px] lg:block xl:right-[4%]" viewBox="0 0 300 300" aria-hidden="true">
-        <!-- Grifo inspirado en el logo -->
-        <path d="M300 46 H150 a42 42 0 0 0 -42 42 V112" fill="none" stroke="rgba(255,255,255,.16)" stroke-width="22" stroke-linecap="butt"/>
-        <path d="M300 46 H150 a42 42 0 0 0 -42 42 V112" fill="none" stroke="rgba(132,189,255,.35)" stroke-width="2" transform="translate(-6 -6)"/>
-        <rect x="80" y="112" width="56" height="14" rx="4" fill="rgba(255,255,255,.22)"/>
-        <g class="drop"><path d="M108 136 c0 0 -11 14 -11 22 a11 11 0 0 0 22 0 c0 -8 -11 -22 -11 -22z" fill="#4f9cf7"/></g>
-        <ellipse class="ripple" cx="108" cy="290" rx="50" ry="9" fill="none" stroke="#84bdff" stroke-width="2"/>
-        <ellipse class="ripple ripple-2" cx="108" cy="290" rx="50" ry="9" fill="none" stroke="#84bdff" stroke-width="1.5"/>
-        <ellipse class="ripple ripple-3" cx="108" cy="290" rx="50" ry="9" fill="none" stroke="#84bdff" stroke-width="1"/>
-      </svg>
+      <!-- Red de tuberías tipo plano técnico (se dibuja y circula flujo) -->
+      <div class="pointer-events-none absolute inset-y-0 right-0 hidden w-[52%] lg:block" aria-hidden="true">
+        <div class="blueprint-grid absolute inset-0"></div>
+        <svg class="absolute right-[-40px] top-1/2 h-[520px] w-[620px] -translate-y-1/2" viewBox="0 0 560 480" fill="none">
+          <path class="net-line" pathLength="1" d="M40 60 H260 V200 H420" style="--d:0ms"/>
+          <path class="net-line" pathLength="1" d="M120 60 V300 H300 V420" style="--d:120ms"/>
+          <path class="net-line" pathLength="1" d="M260 200 V330 H460" style="--d:240ms"/>
+          <path class="net-line" pathLength="1" d="M40 300 H120" style="--d:360ms"/>
+          <path class="net-line" pathLength="1" d="M300 420 H520" style="--d:480ms"/>
+          <path class="net-line" pathLength="1" d="M420 200 V90 H520" style="--d:600ms"/>
+          <path class="net-flow" pathLength="1" d="M40 60 H260 V200 H420" style="--fd:0.0s"/>
+          <path class="net-flow" pathLength="1" d="M120 60 V300 H300 V420" style="--fd:0.9s"/>
+          <path class="net-flow" pathLength="1" d="M260 200 V330 H460" style="--fd:1.8s"/>
+          <path class="net-flow" pathLength="1" d="M40 300 H120" style="--fd:2.7s"/>
+          <g class="net-node" style="--d:600ms"><circle cx="260" cy="60" r="7"/><circle cx="260" cy="60" r="2.5" class="core"/></g>
+          <g class="net-node" style="--d:670ms"><circle cx="120" cy="60" r="7"/><circle cx="120" cy="60" r="2.5" class="core"/></g>
+          <g class="net-node" style="--d:740ms"><circle cx="260" cy="200" r="7"/><circle cx="260" cy="200" r="2.5" class="core"/></g>
+          <g class="net-node" style="--d:810ms"><circle cx="120" cy="300" r="7"/><circle cx="120" cy="300" r="2.5" class="core"/></g>
+          <g class="net-node" style="--d:880ms"><circle cx="300" cy="300" r="7"/><circle cx="300" cy="300" r="2.5" class="core"/></g>
+          <g class="net-node" style="--d:950ms"><circle cx="420" cy="200" r="7"/><circle cx="420" cy="200" r="2.5" class="core"/></g>
+          <g class="net-node" style="--d:1020ms"><circle cx="260" cy="330" r="7"/><circle cx="260" cy="330" r="2.5" class="core"/></g>
+          <g class="net-node" style="--d:1090ms"><circle cx="300" cy="420" r="7"/><circle cx="300" cy="420" r="2.5" class="core"/></g>
+          <g class="net-node" style="--d:1160ms"><circle cx="420" cy="90" r="7"/><circle cx="420" cy="90" r="2.5" class="core"/></g>
+        </svg>
+      </div>
 
       <div class="mx-auto w-full max-w-7xl px-5 pb-32 pt-32 lg:px-8">
         <div class="max-w-3xl">

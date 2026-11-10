@@ -55,23 +55,33 @@
 .hero-media { animation: heroZoom 2.4s var(--ease-out) both; will-change: transform; }
 @keyframes heroZoom { from { transform: scale(1.12); } to { transform: scale(1); } }
 
-/* Gota de agua que cae y genera ondas (elemento de marca) */
-.drop { animation: dropFall 3.2s var(--ease-in-out) infinite; transform-origin: 50% 0; }
-@keyframes dropFall {
-  0%   { transform: translateY(-10px) scale(0.6); opacity: 0; }
-  12%  { opacity: 1; transform: translateY(0) scale(1); }
-  55%  { transform: translateY(140px) scaleY(1.08); opacity: 1; }
-  60%  { transform: translateY(150px) scale(0.4); opacity: 0; }
-  100% { transform: translateY(150px) scale(0.4); opacity: 0; }
+/* Red de tuberías tipo plano técnico */
+.blueprint-grid {
+  background-image:
+    linear-gradient(rgba(132,189,255,.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(132,189,255,.07) 1px, transparent 1px);
+  background-size: 40px 40px;
+  -webkit-mask-image: radial-gradient(ellipse 70% 60% at 60% 50%, #000 30%, transparent 75%);
+  mask-image: radial-gradient(ellipse 70% 60% at 60% 50%, #000 30%, transparent 75%);
+  opacity: 0; animation: fadeIn 1.2s ease 0.2s forwards;
 }
-.ripple { transform-origin: center; transform-box: fill-box; opacity: 0; animation: ripple 3.2s var(--ease-out) infinite; }
-.ripple-2 { animation-delay: 0.25s; }
-.ripple-3 { animation-delay: 0.5s; }
-@keyframes ripple {
-  0%, 56% { transform: scale(0.2); opacity: 0; }
-  60% { opacity: 0.9; }
-  100% { transform: scale(1.6); opacity: 0; }
+.net-line {
+  stroke: rgba(132,189,255,.35); stroke-width: 2; stroke-linecap: square; stroke-linejoin: miter;
+  stroke-dasharray: 1; stroke-dashoffset: 1;
+  animation: drawLine 1.6s var(--ease-in-out) forwards; animation-delay: calc(400ms + var(--d, 0ms));
 }
+@keyframes drawLine { to { stroke-dashoffset: 0; } }
+.net-flow {
+  stroke: #84bdff; stroke-width: 3; stroke-linecap: round;
+  stroke-dasharray: 0.06 0.94; stroke-dashoffset: 1; opacity: 0;
+  filter: drop-shadow(0 0 6px rgba(79,156,247,.9));
+  animation: flow 3.6s linear infinite; animation-delay: calc(2.2s + var(--fd, 0s));
+}
+@keyframes flow { 0% { stroke-dashoffset: 1; opacity: 1; } 100% { stroke-dashoffset: 0; opacity: 1; } }
+.net-node { opacity: 0; transform: scale(0.6); transform-box: fill-box; transform-origin: center; animation: nodeIn 0.6s var(--ease-out) forwards; animation-delay: calc(900ms + var(--d, 0ms)); }
+.net-node circle { fill: #15213f; stroke: rgba(132,189,255,.6); stroke-width: 2; }
+.net-node circle.core { fill: #84bdff; stroke: none; }
+@keyframes nodeIn { to { opacity: 1; transform: scale(1); } }
 
 /* Olas animadas (movimiento constante = linear) */
 .wave-track { animation: waveMove 14s linear infinite; }
@@ -185,8 +195,10 @@
   .reveal-clip img { transform: none; }
   .split-word { transform: none; animation: none; }
   .fade-up, .wa-float { transform: none; animation: fadeIn 0.4s ease forwards; }
-  .hero-media, .drop, .ripple, .wave-track, .scroll-dot, .marquee-track, .btn-shine::before, .wa-float::after { animation: none; }
-  .drop, .ripple { opacity: 0; }
+  .hero-media, .net-flow, .wave-track, .scroll-dot, .marquee-track, .btn-shine::before, .wa-float::after { animation: none; }
+  .net-line { stroke-dashoffset: 0; animation: none; }
+  .net-node, .blueprint-grid { opacity: 1; transform: none; animation: none; }
+  .net-flow { opacity: 0; }
   #pipe-fill { transform: scaleY(1); }
   .pipe-node { transform: none; }
   .pipe-step { opacity: 1; }
